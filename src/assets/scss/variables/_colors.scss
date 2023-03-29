@@ -1,0 +1,26 @@
+$primary: #FF9C72;
+$secondary: #7291FF;
+$danger: #FF7272;
+$success: #77CE7A;
+
+$white: #fff;
+$black: #000;
+$yellow: #FFCE31;
+
+$grey: #F8F8F8;
+
+$text-dark: #292929;
+$text-light-dark: #343434;
+
+$text-colors: (
+        "dark": $text-dark,
+        "dark-light": $text-light-dark,
+        "light": $white
+);
+
+$icon-colors: (
+        "primary": $primary,
+        "danger": $danger,
+        "yellow": $yellow,
+        "black": $black
+)

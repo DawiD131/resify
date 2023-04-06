@@ -1,7 +1,7 @@
 import UiLink from '../../ui/atoms/UiLink/UiLink.vue';
 
 export default {
-  title: 'Ui/atoms/Link',
+  title: 'Ui/atoms/UiLink',
   component: UiLink,
   argTypes: {
     size: {

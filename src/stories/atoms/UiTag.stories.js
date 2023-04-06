@@ -1,7 +1,7 @@
 import UiTag from '../../ui/atoms/UiTag.vue';
 
 export default {
-  title: 'Ui/atoms/Tag',
+  title: 'Ui/atoms/UiTag',
   component: UiTag
 };
 

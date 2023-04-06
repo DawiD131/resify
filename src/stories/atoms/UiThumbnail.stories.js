@@ -1,7 +1,7 @@
 import UiThumbnail from '../../ui/atoms/UiThumbnail.vue';
 
 export default {
-  title: 'Ui/atoms/Thumbnail',
+  title: 'Ui/atoms/UiThumbnail',
   component: UiThumbnail,
   argTypes: {
     size: {

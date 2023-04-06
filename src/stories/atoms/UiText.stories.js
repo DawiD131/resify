@@ -1,7 +1,7 @@
 import UiText from '../../ui/atoms/UiText/UiText.vue';
 
 export default {
-  title: 'Ui/atoms/Text',
+  title: 'Ui/atoms/UiText',
   component: UiText,
   argTypes: {
     size: {
@@ -24,12 +24,11 @@ const Template = (args) => ({
   setup() {
     return { args };
   },
-  template: '<UiText v-bind="args" />'
+  template: '<UiText v-bind="args" >Some text</UiText>'
 });
 
 export const Primary = Template.bind({});
 Primary.args = {
   size: 'xxl',
-  text: 'Some text',
   color: 'dark'
 };

@@ -1,21 +1,26 @@
 <script lang="ts" setup>
 interface Props {
-  label: string;
   size?: 'medium' | 'big';
   variant?: 'primary' | 'secondary' | 'success' | 'danger';
+  expanded?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   size: 'medium',
-  variant: 'primary'
+  variant: 'primary',
+  expanded: false
 });
 
 const emit = defineEmits(['click']);
 </script>
 
 <template>
-  <button @click="emit('click')" class="UiButton" :class="[props.variant, props.size]">
-    {{ props.label }}
+  <button
+    @click="emit('click')"
+    class="UiButton"
+    :class="[props.variant, props.size, { expanded: props.expanded }]"
+  >
+    <slot />
   </button>
 </template>
 
@@ -23,15 +28,23 @@ const emit = defineEmits(['click']);
 @import '../../assets/scss/variables.scss';
 
 .UiButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   border-radius: $base-radius;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
   color: $white;
   cursor: pointer;
   transition: 0.2s;
+  font-weight: 300;
+  max-width: max-content;
+
+  &.expanded {
+    max-width: 100%;
+  }
 
   &.medium {
-    padding: 1.2rem 4.8rem;
+    padding: 1rem 4.2rem;
     font-size: 1.6rem;
   }
 
@@ -45,7 +58,7 @@ const emit = defineEmits(['click']);
   }
 
   &.secondary {
-    background: transparent;
+    background: $white;
     color: $primary;
   }
 

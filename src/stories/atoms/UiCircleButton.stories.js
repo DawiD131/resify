@@ -1,7 +1,7 @@
 import UiCircleButton from '../../ui/atoms/UiCircleButton.vue';
 
 export default {
-  title: 'Ui/atoms/CircleButton',
+  title: 'Ui/atoms/UiCircleButton',
   component: UiCircleButton,
   argTypes: {
     variant: {

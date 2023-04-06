@@ -3,7 +3,6 @@ import { type TextSizes, type TextColors, textColors, textSizes } from './_inter
 import { computed } from 'vue';
 
 interface Props {
-  text: string;
   size: TextSizes;
   color: TextColors;
 }
@@ -15,7 +14,7 @@ const colorClass = computed(() => textColors[props.color]);
 </script>
 
 <template>
-  <span :class="[sizeClass, colorClass]">{{ props.text }}</span>
+  <span :class="[sizeClass, colorClass]"><slot /></span>
 </template>
 
 <style lang="scss" scoped>

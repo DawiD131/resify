@@ -1,7 +1,7 @@
 import UiHeading from '../../ui/atoms/UiHeading/UiHeading.vue';
 
 export default {
-  title: 'Ui/atoms/Heading',
+  title: 'Ui/atoms/UiHeading',
   component: UiHeading,
   argTypes: {
     size: {
@@ -24,47 +24,41 @@ const Template = (args) => ({
   setup() {
     return { args };
   },
-  template: '<UiHeading v-bind="args" />'
+  template: '<UiHeading v-bind="args" >Some text</UiHeading>'
 });
 
 export const First = Template.bind({});
 First.args = {
   size: 'h1',
-  text: 'Some text',
   color: 'dark'
 };
 
 export const Second = Template.bind({});
 Second.args = {
   size: 'h2',
-  text: 'Some text',
   color: 'dark'
 };
 
 export const Third = Template.bind({});
 Third.args = {
   size: 'h3',
-  text: 'Some text',
   color: 'dark'
 };
 
 export const Fourth = Template.bind({});
 Fourth.args = {
   size: 'h4',
-  text: 'Some text',
   color: 'dark'
 };
 
 export const Fifth = Template.bind({});
 Fifth.args = {
   size: 'h5',
-  text: 'Some text',
   color: 'dark'
 };
 
 export const Sixth = Template.bind({});
 Sixth.args = {
   size: 'h6',
-  text: 'Some text',
   color: 'dark'
 };

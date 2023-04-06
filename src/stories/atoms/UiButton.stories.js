@@ -1,7 +1,7 @@
 import UiButton from '../../ui/atoms/UiButton.vue';
 
 export default {
-  title: 'Ui/atoms/Button',
+  title: 'Ui/atoms/UiButton',
   component: UiButton,
   argTypes: {
     size: {
@@ -22,31 +22,27 @@ const Template = (args) => ({
   setup() {
     return { args };
   },
-  template: '<UiButton v-bind="args" />'
+  template: '<UiButton v-bind="args">Button</UiButton>'
 });
 
 export const Primary = Template.bind({});
 Primary.args = {
-  variant: 'primary',
-  label: 'Button'
+  variant: 'primary'
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  variant: 'secondary',
-  label: 'Button'
+  variant: 'secondary'
 };
 
 export const Danger = Template.bind({});
 Danger.args = {
   variant: 'danger',
-  label: 'Button',
   size: 'big'
 };
 
 export const Success = Template.bind({});
 Success.args = {
   variant: 'success',
-  label: 'Button',
   size: 'big'
 };

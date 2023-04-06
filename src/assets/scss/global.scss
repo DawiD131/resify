@@ -1,17 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap');
 
 @import "variables/main";
+@import "helpers";
 
 html {
   font-size: 62.5%;
   font-family: 'Open Sans', sans-serif;
 
+  @include below-desktop {
+    font-size: 55%;
+  }
+
+  @include below-laptop {
+    font-size: 50%;
+  }
+
+  @include below-tablet {
+    font-size: 45%;
+  }
+
+  @include below-mobile {
+    font-size: 43%;
+  }
 }
 
 body {
   font-size: 1.4rem;
   font-family: 'Open Sans', sans-serif;
+
+
 }
+
 
 /***
     The new CSS reset - version 1.8.4 (last updated 14.2.2023)

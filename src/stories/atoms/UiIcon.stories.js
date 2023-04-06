@@ -1,7 +1,7 @@
 import UiIcon from '../../ui/atoms/UiIcon/UiIcon.vue';
 
 export default {
-  title: 'Ui/atoms/Icon',
+  title: 'Ui/atoms/UiIcon',
   component: UiIcon,
   argTypes: {
     variant: {

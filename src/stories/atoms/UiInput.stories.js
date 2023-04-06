@@ -1,7 +1,7 @@
 import UiInput from '../../ui/atoms/UiInput.vue';
 
 export default {
-  title: 'Ui/atoms/Input',
+  title: 'Ui/atoms/UiInput',
   component: UiInput
 };
 

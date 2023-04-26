@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import UiIcon from './UiIcon/UiIcon.vue';
+import { computed } from 'vue';
 
 interface Props {
   variant: 'danger' | 'success';
@@ -14,12 +15,14 @@ const mapVariantToIcon = {
   danger: 'minus',
   success: 'plus'
 };
+
+const iconVariant = computed(() => mapVariantToIcon[props.variant] as 'minus' | 'plus');
 </script>
 
 <template>
   <div class="UiCircleButton" @click="emit('click')" :class="props.variant">
     <button class="button">
-      <UiIcon :variant="mapVariantToIcon[props.variant]" color="black" size="xxs" />
+      <UiIcon :variant="iconVariant" color="black" size="xxs" />
     </button>
     <span v-if="props.label" class="label"> {{ props.label }} </span>
   </div>

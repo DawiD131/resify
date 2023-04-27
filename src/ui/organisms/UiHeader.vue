@@ -1,17 +1,21 @@
 <script lang="ts" setup>
 import UiSearchInput from '../molecules/UiSearchInput/UiSearchInput.vue';
-import UiButton from '../atoms/UiButton.vue';
 import UiLogo from '../atoms/UiLogo.vue';
 import { useCssBreakpoints } from '../../composables/useCssBreakpoints';
 import UiHamburger from '../atoms/UiHamburger.vue';
-import { ref } from 'vue';
-import UiMobileMenu from '../organisms/UiMobileMenu.vue';
+
+interface Props {
+  hamburgerState: boolean;
+}
+
+const props = defineProps<Props>();
+
+const emit = defineEmits<{
+  (e: 'hamburgerClick'): void;
+}>();
 
 const breakpoints = useCssBreakpoints();
-
 const isDesktop = breakpoints.greater('tablet');
-
-const state = ref(false);
 </script>
 
 <template>
@@ -24,10 +28,14 @@ const state = ref(false);
       v-if="isDesktop"
     />
     <div class="actions" v-if="isDesktop">
-      <UiButton variant="secondary" size="medium">Login</UiButton>
+      <slot name="actions" />
     </div>
-    <UiHamburger :is-open="state" @click="() => (state = !state)" v-if="!isDesktop" />
-    <UiMobileMenu :is-open="state" />
+    <UiHamburger
+      :is-open="props.hamburgerState"
+      @click="emit('hamburgerClick')"
+      v-if="!isDesktop"
+    />
+    <slot name="mobile-nav" />
   </header>
 </template>
 

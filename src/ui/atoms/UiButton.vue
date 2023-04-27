@@ -26,6 +26,7 @@ const emit = defineEmits(['click']);
 
 <style lang="scss" scoped>
 @import '../../assets/scss/variables.scss';
+@import '../../assets/scss/helpers.scss';
 
 .UiButton {
   display: flex;
@@ -73,6 +74,13 @@ const emit = defineEmits(['click']);
   &:hover {
     transform: translateY(-3px);
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  @include below-tablet() {
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
   }
 }
 </style>

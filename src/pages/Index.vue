@@ -6,10 +6,31 @@ import UiButton from '@/ui/atoms/UiButton.vue';
 import UiVerticalRestaurantCard from '@/ui/organisms/UiVerticalRestaurantCard.vue';
 import _ from 'lodash';
 import UiSlider from '@/ui/organisms/UiSlider.vue';
+import { useModalStore } from '@/features/modals/stores/useModalStore';
+import MobileMenu from '@/components/organisms/MobileMenu.vue';
+import { useMobileNavStore } from '@/stores/useMobileNavStore';
+
+const modalStore = useModalStore();
+const mobileNavStore = useMobileNavStore();
 </script>
 
 <template>
-  <UiHeader />
+  <UiHeader
+    @hamburgerClick="mobileNavStore.setState(!mobileNavStore.state)"
+    :hamburger-state="mobileNavStore.state"
+  >
+    <template #actions>
+      <UiButton
+        variant="secondary"
+        size="medium"
+        @click="modalStore.setModalState('authModal', true)"
+        >Login</UiButton
+      >
+    </template>
+    <template #mobile-nav>
+      <MobileMenu />
+    </template>
+  </UiHeader>
   <UiLandingPageContainer>
     <template #hero>
       <UiHeading size="h1" color="dark">Easily book tables at your favorite restaurants!</UiHeading>

@@ -13,7 +13,7 @@ interface Props {
   color: IconColors;
   variant: IconNames;
   size: IconSizes;
-  withAction: boolean;
+  withAction?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -28,7 +28,7 @@ const icon = computed(() => iconsSet[props.variant]);
 </script>
 
 <template>
-  <button v-if="props.withAction" @click="emit('click')">
+  <button v-if="props.withAction" @click="emit('click')" class="action">
     <svg
       :viewBox="icon.viewBox"
       xmlns="http://www.w3.org/2000/svg"
@@ -49,6 +49,10 @@ const icon = computed(() => iconsSet[props.variant]);
 
 <style lang="scss" scoped>
 @import '../../../assets/scss/variables.scss';
+
+.action {
+  cursor: pointer;
+}
 
 @each $name, $color in $icon-colors {
   .color-#{$name} {

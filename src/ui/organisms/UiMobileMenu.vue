@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, watch, onUnmounted } from 'vue';
+import UiLogo from '@/ui/atoms/UiLogo.vue';
+import UiText from '@/ui/atoms/UiText/UiText.vue';
 
 interface Props {
   isOpen: boolean;
@@ -22,8 +24,17 @@ onUnmounted(() => window.removeEventListener('resize', updateMenuHeight));
 
 <template>
   <Transition>
-    <div class="UiMobileMenu" v-if="props.isOpen" ref="menuEl">
-      <slot />
+    <div class="UiMobileMenu" v-if="props.isOpen" ref="menuEl" v-lock-body-scroll>
+      <div class="content">
+        <slot name="content-top" />
+        <div class="content-bottom">
+          <slot name="content-bottom" />
+          <div class="footer">
+            <UiLogo />
+            <UiText color="light" size="xxs">Created by Dawid Kutwin</UiText>
+          </div>
+        </div>
+      </div>
     </div>
   </Transition>
 </template>
@@ -37,8 +48,23 @@ onUnmounted(() => window.removeEventListener('resize', updateMenuHeight));
   position: fixed;
   width: 100vw;
   z-index: 10000;
-  background: $primary;
+  background-color: rgba($primary, 0.9);
   border-top: 1px solid $white;
+
+  .content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.5rem 2rem;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+  }
 }
 
 .v-leave-active,

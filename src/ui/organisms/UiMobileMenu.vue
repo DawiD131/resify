@@ -1,14 +1,28 @@
 <script setup lang="ts">
+import { onMounted, ref, watch, onUnmounted } from 'vue';
+
 interface Props {
   isOpen: boolean;
 }
 
 const props = defineProps<Props>();
+
+const menuEl = ref<HTMLElement | null>(null);
+
+const updateMenuHeight = () => {
+  if (menuEl.value?.style) {
+    menuEl.value.style.height = `calc(${window.innerHeight}px - 7rem)`;
+  }
+};
+
+watch(menuEl, () => updateMenuHeight());
+onMounted(() => window.addEventListener('resize', updateMenuHeight));
+onUnmounted(() => window.removeEventListener('resize', updateMenuHeight));
 </script>
 
 <template>
   <Transition>
-    <div class="UiMobileMenu" v-if="props.isOpen">
+    <div class="UiMobileMenu" v-if="props.isOpen" ref="menuEl">
       <slot />
     </div>
   </Transition>
@@ -18,7 +32,6 @@ const props = defineProps<Props>();
 @import '../../assets/scss/variables.scss';
 
 .UiMobileMenu {
-  height: calc(100vh - 44px);
   bottom: 0;
   left: 0;
   position: fixed;

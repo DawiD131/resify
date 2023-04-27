@@ -33,6 +33,7 @@ const state = ref(false);
 
 <style lang="scss" scoped>
 @import '../../assets/scss/variables.scss';
+@import '../../assets/scss/helpers.scss';
 
 .UiHeader {
   position: fixed;
@@ -45,6 +46,10 @@ const state = ref(false);
   background: $primary;
   padding: 1rem 2rem;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+
+  @include below-tablet() {
+    height: 7rem;
+  }
 
   .search {
     flex-basis: 35%;

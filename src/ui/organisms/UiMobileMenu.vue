@@ -26,7 +26,9 @@ onUnmounted(() => window.removeEventListener('resize', updateMenuHeight));
   <Transition>
     <div class="UiMobileMenu" v-if="props.isOpen" ref="menuEl" v-lock-body-scroll>
       <div class="content">
-        <slot name="content-top" />
+        <div class="content-top">
+          <slot name="content-top" />
+        </div>
         <div class="content-bottom">
           <slot name="content-bottom" />
           <div class="footer">
@@ -48,8 +50,14 @@ onUnmounted(() => window.removeEventListener('resize', updateMenuHeight));
   position: fixed;
   width: 100vw;
   z-index: 10000;
-  background-color: rgba($primary, 0.9);
+  background-color: $primary;
   border-top: 1px solid $white;
+
+  .content-top {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
 
   .content {
     height: 100%;

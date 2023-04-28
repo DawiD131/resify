@@ -12,12 +12,14 @@ const modalStore = useModalStore();
 <template>
   <UiMobileMenu :is-open="mobileNavStore.state">
     <template #content-top>
-      <UiSearchInput placeholder="search by restaurant name" :is-loading="false" />
-    </template>
-    <template #content-bottom>
-      <UiButton variant="secondary" @click="modalStore.setModalState('authModal', true)"
+      <UiButton
+        variant="secondary"
+        @click="modalStore.setModalState('authModal', true)"
+        expanded
+        size="big"
         >Login</UiButton
       >
+      <UiSearchInput placeholder="search by restaurant name" :is-loading="false" />
     </template>
   </UiMobileMenu>
 </template>

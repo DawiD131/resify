@@ -16,17 +16,19 @@ const emit = defineEmits<{
 <template>
   <div class="UiOverlay" v-lock-body-scroll>
     <div class="top-bar">
-      <UiText size="xl" color="dark">{{ props.title }}</UiText>
+      <UiText size="xl" color="light">{{ props.title }}</UiText>
       <UiIcon
         variant="close"
         size="l"
-        color="black"
+        color="white"
         class="icon"
         @click="emit('close')"
         withAction
       />
     </div>
-    <slot></slot>
+    <div class="content">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -39,14 +41,22 @@ const emit = defineEmits<{
   position: fixed;
   height: 100vh;
   width: 100vw;
-  backdrop-filter: blur(10px) contrast(100%);
-  -webkit-backdrop-filter: blur(10px) contrast(100%);
+  backdrop-filter: blur(10px) contrast(100%) brightness(60%);
+  -webkit-backdrop-filter: blur(10px) contrast(100%) brightness(60%);
   z-index: 2000;
 
   .top-bar {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 2rem 2rem;
+  }
+
+  .content {
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
     padding: 2rem 2rem;
   }
 }

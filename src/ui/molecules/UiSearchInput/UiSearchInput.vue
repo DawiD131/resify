@@ -29,6 +29,7 @@ const inputItems = inject<SearchInputItem[]>('search-input-items');
 
 <style lang="scss" scoped>
 @import '../../../assets/scss/variables.scss';
+@import '../../../assets/scss/helpers.scss';
 
 .UiSearchInput {
   .input-relative-box {
@@ -43,6 +44,11 @@ const inputItems = inject<SearchInputItem[]>('search-input-items');
       &::placeholder {
         color: $text-light-dark;
         font-weight: 300;
+      }
+
+      @include below-tablet() {
+        font-size: 1.8rem;
+        padding: 1.2rem 1.4rem 1.2rem 4.2rem;
       }
     }
 

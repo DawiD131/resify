@@ -34,6 +34,7 @@ const value = computed({
 
 <style lang="scss" scoped>
 @import '../../assets/scss/variables.scss';
+@import '../../assets/scss/helpers.scss';
 
 .UiInput {
   display: flex;
@@ -46,6 +47,12 @@ const value = computed({
     border-radius: $base-radius;
     padding: 0 1.2rem;
     width: 100%;
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25);
+
+    @include below-tablet() {
+      font-size: 2rem;
+      height: 4.3rem;
+    }
   }
 
   .input-container {

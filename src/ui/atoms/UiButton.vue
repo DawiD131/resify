@@ -41,7 +41,8 @@ const emit = defineEmits(['click']);
   max-width: max-content;
 
   &.expanded {
-    max-width: 100%;
+    width: 100%;
+    max-width: initial;
   }
 
   &.medium {

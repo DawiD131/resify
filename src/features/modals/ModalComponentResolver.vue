@@ -11,6 +11,6 @@ const modalStore = useModalStore();
     v-if="modalStore.activeModalName"
     @close="modalStore.closeModals()"
   >
-    <component :is="modalStore.activeModalComponent" />
+    <component :is="modalStore.activeModalComponent" v-if="modalStore.activeModalComponent" />
   </UiOverlay>
 </template>

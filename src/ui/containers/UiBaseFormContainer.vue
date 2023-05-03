@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import UiButton from '@/ui/atoms/UiButton.vue';
-import UiHeading from '@/ui/atoms/UiHeading/UiHeading.vue';
+import { UiButton, UiHeading } from '@/ui';
 
 interface Props {
   submitText?: string;
@@ -53,7 +52,7 @@ const emit = defineEmits<{
   .inputs {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   .row-inputs {

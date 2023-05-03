@@ -1,8 +1,6 @@
 <script lang="ts" setup>
-import UiSearchInput from '@/ui/molecules/UiSearchInput/UiSearchInput.vue';
-import UiMobileMenu from '@/ui/organisms/UiMobileMenu.vue';
+import { UiSearchInput, UiMobileMenu, UiButton } from '@/ui';
 import { useMobileNavStore } from '@/stores/useMobileNavStore';
-import UiButton from '@/ui/atoms/UiButton.vue';
 import { useModalStore } from '@/features/modals/stores/useModalStore';
 
 const mobileNavStore = useMobileNavStore();

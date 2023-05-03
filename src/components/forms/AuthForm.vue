@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import UiBaseFormContainer from '@/ui/containers/UiBaseFormContainer.vue';
-import UiInput from '@/ui/atoms/UiInput.vue';
+import { UiBaseFormContainer, UiInput } from '@/ui';
 import { ref } from 'vue';
 
 const state = ref('');

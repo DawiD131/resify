@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import UiIcon from '../atoms/UiIcon/UiIcon.vue';
-import UiText from '@/ui/atoms/UiText/UiText.vue';
+import { UiIcon, UiText } from '@/ui';
 
 interface Props {
   title: string;
@@ -34,6 +33,7 @@ const emit = defineEmits<{
 
 <style scoped lang="scss">
 @import '../../assets/scss/variables.scss';
+@import '../../assets/scss/helpers.scss';
 
 .UiOverlay {
   top: 0;
@@ -44,6 +44,7 @@ const emit = defineEmits<{
   backdrop-filter: blur(10px) contrast(100%) brightness(60%);
   -webkit-backdrop-filter: blur(10px) contrast(100%) brightness(60%);
   z-index: 2000;
+  overflow-y: scroll;
 
   .top-bar {
     width: 100%;
@@ -57,7 +58,11 @@ const emit = defineEmits<{
     max-width: 700px;
     margin: 0 auto;
     width: 100%;
-    padding: 2rem 2rem;
+    padding: 2rem 1.5rem;
+
+    @include below-tablet() {
+      padding: 2rem 1.5rem 20rem 1.5rem;
+    }
   }
 }
 </style>

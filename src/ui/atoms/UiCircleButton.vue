@@ -29,7 +29,7 @@ const iconVariant = computed(() => mapVariantToIcon[props.variant] as 'minus' | 
 </template>
 
 <style lang="scss" scoped>
-@import '../../assets/scss/variables';
+@import '../../assets/scss/helpers.scss';
 
 .UiCircleButton {
   display: flex;

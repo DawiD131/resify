@@ -25,7 +25,6 @@ const emit = defineEmits(['click']);
 </template>
 
 <style lang="scss" scoped>
-@import '../../assets/scss/variables.scss';
 @import '../../assets/scss/helpers.scss';
 
 .UiButton {

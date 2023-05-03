@@ -28,7 +28,7 @@ const inputItems = inject<SearchInputItem[]>('search-input-items');
 </template>
 
 <style lang="scss" scoped>
-@import '../../../assets/scss/variables.scss';
+@import '../../../assets/scss/helpers.scss';
 @import '../../../assets/scss/helpers.scss';
 
 .UiSearchInput {

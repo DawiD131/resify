@@ -17,7 +17,7 @@ const colorClass = headingColors[props.color];
 </template>
 
 <style lang="scss" scoped>
-@import '../../../assets/scss/variables.scss';
+@import '../../../assets/scss/helpers.scss';
 
 h1,
 h2,

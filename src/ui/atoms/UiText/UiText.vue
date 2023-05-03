@@ -18,7 +18,7 @@ const colorClass = computed(() => textColors[props.color]);
 </template>
 
 <style lang="scss" scoped>
-@import '../../../assets/scss/variables.scss';
+@import '../../../assets/scss/helpers.scss';
 
 @each $name, $size in $text-sizes {
   .size-#{$name} {

@@ -42,7 +42,7 @@ onUnmounted(() => window.removeEventListener('resize', updateMenuHeight));
 </template>
 
 <style scoped lang="scss">
-@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/helpers.scss';
 
 .UiMobileMenu {
   bottom: 0;

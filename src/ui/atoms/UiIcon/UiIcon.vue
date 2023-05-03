@@ -48,7 +48,7 @@ const icon = computed(() => iconsSet[props.variant]);
 </template>
 
 <style lang="scss" scoped>
-@import '../../../assets/scss/variables.scss';
+@import '../../../assets/scss/helpers.scss';
 
 .action {
   cursor: pointer;

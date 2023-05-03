@@ -13,7 +13,7 @@ const props = defineProps<Props>();
 </template>
 
 <style scoped lang="scss">
-@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/helpers.scss';
 
 .UiTag {
   background: $secondary;

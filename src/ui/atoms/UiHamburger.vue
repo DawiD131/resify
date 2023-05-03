@@ -19,7 +19,7 @@ const emit = defineEmits<{
 </template>
 
 <style lang="scss" scoped>
-@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/helpers.scss';
 
 .UiHamburger {
   display: flex;

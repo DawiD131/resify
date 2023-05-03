@@ -47,10 +47,9 @@ const value = computed({
     border-radius: $base-radius;
     padding: 0 1.2rem;
     width: 100%;
-    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25);
 
     @include below-tablet() {
-      font-size: 2rem;
+      font-size: 1.8rem;
       height: 4.3rem;
     }
   }

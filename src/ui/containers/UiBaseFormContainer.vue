@@ -66,6 +66,9 @@ const emit = defineEmits<{
 
   .actions {
     margin-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
   }
 }
 </style>

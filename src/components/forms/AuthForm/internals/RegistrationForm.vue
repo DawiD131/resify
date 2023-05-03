@@ -1,7 +1,9 @@
 <script lang="ts" setup>
-import { UiBaseFormContainer, UiInput } from '@/ui';
+import { UiBaseFormContainer, UiInput, UiButton } from '@/ui';
+import { useAuthForm } from '@/composables/useAuthForm';
 import { ref } from 'vue';
 
+const { openLoginForm } = useAuthForm();
 const state = ref('');
 </script>
 
@@ -36,6 +38,10 @@ const state = ref('');
         :isValid="true"
         v-model="state"
       />
+    </template>
+    <template #actions>
+      <UiButton variant="success" size="big" expanded>Register</UiButton>
+      <UiButton variant="text" @click="openLoginForm()">Or login</UiButton>
     </template>
   </UiBaseFormContainer>
 </template>

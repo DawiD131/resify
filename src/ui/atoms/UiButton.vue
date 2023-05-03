@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 interface Props {
   size?: 'medium' | 'big';
-  variant?: 'primary' | 'secondary' | 'success' | 'danger';
+  variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'text';
   expanded?: boolean;
 }
 
@@ -16,7 +16,7 @@ const emit = defineEmits(['click']);
 
 <template>
   <button
-    @click="emit('click')"
+    @click.prevent="emit('click')"
     class="UiButton"
     :class="[props.variant, props.size, { expanded: props.expanded }]"
   >
@@ -51,8 +51,8 @@ const emit = defineEmits(['click']);
   }
 
   &.big {
-    padding: 1.5rem 5.2rem;
-    font-size: 2.2rem;
+    padding: 1.2rem 4.8rem;
+    font-size: 2rem;
   }
 
   &.primary {
@@ -70,6 +70,21 @@ const emit = defineEmits(['click']);
 
   &.success {
     background: $success;
+  }
+
+  &.text {
+    background: transparent;
+    padding: 0;
+    color: $primary;
+
+    @include below-tablet() {
+      font-size: 2rem;
+    }
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
   }
 
   &:hover {

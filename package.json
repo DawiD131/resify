@@ -17,8 +17,10 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
     "@types/lodash": "^4.14.194",
     "@vueuse/core": "^10.1.0",
+    "axios": "^1.4.0",
     "i": "^0.3.7",
     "lodash": "^4.17.21",
     "pinia": "^2.0.32",

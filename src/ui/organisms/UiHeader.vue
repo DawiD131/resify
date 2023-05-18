@@ -20,22 +20,24 @@ const isDesktop = breakpoints.greater('tablet');
 
 <template>
   <header class="UiHeader">
-    <UiLogo />
-    <UiSearchInput
-      placeholder="search by restaurant name"
-      :is-loading="false"
-      class="search"
-      v-if="isDesktop"
-    />
-    <div class="actions" v-if="isDesktop">
-      <slot name="actions" />
+    <div class="content">
+      <UiLogo />
+      <UiSearchInput
+        placeholder="search by restaurant name"
+        :is-loading="false"
+        class="search"
+        v-if="isDesktop"
+      />
+      <div class="actions" v-if="isDesktop">
+        <slot name="actions" />
+      </div>
+      <UiHamburger
+        :is-open="props.hamburgerState"
+        @click="emit('hamburgerClick')"
+        v-if="!isDesktop"
+      />
+      <slot name="mobile-nav" />
     </div>
-    <UiHamburger
-      :is-open="props.hamburgerState"
-      @click="emit('hamburgerClick')"
-      v-if="!isDesktop"
-    />
-    <slot name="mobile-nav" />
   </header>
 </template>
 
@@ -47,12 +49,17 @@ const isDesktop = breakpoints.greater('tablet');
   top: 0;
   z-index: 1000;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   background: $primary;
-  padding: 1rem 2rem;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+
+  .content {
+    @include page-content-layout-large();
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   @include below-tablet() {
     height: 7rem;

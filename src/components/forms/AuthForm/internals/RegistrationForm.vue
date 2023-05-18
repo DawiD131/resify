@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { UiBaseFormContainer, UiInput, UiButton } from '@/ui';
+import { UiBaseFormLayout, UiInput, UiButton } from '@/ui';
 import { useAuthForm } from '@/composables/useAuthForm';
 import { ref } from 'vue';
 
@@ -8,7 +8,7 @@ const state = ref('');
 </script>
 
 <template>
-  <UiBaseFormContainer submitText="Login" title="Hello">
+  <UiBaseFormLayout submitText="Login" title="Hello">
     <template #inputs>
       <UiInput
         label="First name"
@@ -43,5 +43,5 @@ const state = ref('');
       <UiButton variant="success" size="big" expanded>Register</UiButton>
       <UiButton variant="text" @click="openLoginForm()">Or login</UiButton>
     </template>
-  </UiBaseFormContainer>
+  </UiBaseFormLayout>
 </template>

@@ -1,11 +1,13 @@
 <script lang="ts" setup>
-import UiHeader from '@/ui/organisms/UiHeader.vue';
-import UiLandingPageContainer from '@/ui/containers/UiLandingPageContainer.vue';
-import UiHeading from '@/ui/atoms/UiHeading/UiHeading.vue';
-import UiButton from '@/ui/atoms/UiButton.vue';
-import UiVerticalRestaurantCard from '@/ui/organisms/UiVerticalRestaurantCard.vue';
+import {
+  UiLandingPage,
+  UiHeading,
+  UiButton,
+  UiHeader,
+  UiVerticalRestaurantCard,
+  UiSlider
+} from '@/ui';
 import _ from 'lodash';
-import UiSlider from '@/ui/organisms/UiSlider.vue';
 import { useModalStore } from '@/features/modals/stores/useModalStore';
 import MobileMenu from '@/components/organisms/MobileMenu.vue';
 import { useMobileNavStore } from '@/stores/useMobileNavStore';
@@ -31,7 +33,7 @@ const mobileNavStore = useMobileNavStore();
       <MobileMenu />
     </template>
   </UiHeader>
-  <UiLandingPageContainer>
+  <UiLandingPage>
     <template #hero>
       <UiHeading size="h1" color="dark">Easily book tables at your favorite restaurants!</UiHeading>
       <UiButton variant="primary" size="big">Let's started!</UiButton>
@@ -68,7 +70,7 @@ const mobileNavStore = useMobileNavStore();
         </template>
       </UiSlider>
     </template>
-  </UiLandingPageContainer>
+  </UiLandingPage>
 </template>
 
 <style lang="scss">

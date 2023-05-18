@@ -14,7 +14,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <div class="UiBaseFormContainer">
+  <div class="UiBaseFormLayout">
     <form>
       <UiHeading size="h3" class="header" color="dark">{{ props.title }}</UiHeading>
       <div class="inputs">
@@ -37,7 +37,7 @@ const emit = defineEmits<{
 <style lang="scss" scoped>
 @import '../../assets/scss/helpers.scss';
 
-.UiBaseFormContainer {
+.UiBaseFormLayout {
   background: $white;
   padding: 3rem 2rem;
   box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.25);

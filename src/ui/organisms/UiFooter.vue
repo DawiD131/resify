@@ -23,13 +23,15 @@ import UiText from '../atoms/UiText/UiText.vue';
   background-size: 100% 100%;
   display: flex;
   align-items: flex-end;
-  padding: 2.4rem 2rem;
+  padding: 2.4rem 0;
 
   @include below-tablet {
     background-size: 210% 100%;
   }
 
   .content {
+    @include page-content-layout-large();
+
     width: 100%;
     display: flex;
     justify-content: space-between;

@@ -3,7 +3,7 @@ import UiFooter from '../organisms/UiFooter.vue';
 </script>
 
 <template>
-  <main class="UiLandingPageContainer">
+  <main class="UiLandingPage">
     <section class="hero-section">
       <div class="hero-left">
         <slot name="hero" />
@@ -22,14 +22,17 @@ import UiFooter from '../organisms/UiFooter.vue';
         </div>
       </div>
     </section>
-    <section class="section">
-      <div class="section-heading">
-        <slot name="bottom-section-heading" />
-      </div>
-      <div class="section-content">
-        <slot name="bottom-section-content" />
-      </div>
-    </section>
+    <div>
+      <section class="section">
+        <div class="section-heading">
+          <slot name="bottom-section-heading" />
+        </div>
+        <div class="section-content">
+          <slot name="bottom-section-content" />
+        </div>
+      </section>
+    </div>
+
     <UiFooter />
   </main>
 </template>
@@ -37,7 +40,7 @@ import UiFooter from '../organisms/UiFooter.vue';
 <style lang="scss" scoped>
 @import '../../assets/scss/helpers.scss';
 
-.UiLandingPageContainer {
+.UiLandingPage {
   display: flex;
   flex-direction: column;
 
@@ -45,10 +48,12 @@ import UiFooter from '../organisms/UiFooter.vue';
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 12rem 6rem 5rem 6rem;
+    padding: 12rem 0 5rem 0;
+
+    @include page-content-layout-base();
 
     @include below-mobile() {
-      padding: 10rem 2rem 3rem 2rem;
+      padding: 10rem 0 3rem 0;
     }
 
     .hero-image {
@@ -64,7 +69,6 @@ import UiFooter from '../organisms/UiFooter.vue';
 
     .hero-left {
       flex-basis: 50%;
-      max-width: 800px;
       margin-top: 8rem;
       display: flex;
       flex-direction: column;
@@ -102,13 +106,7 @@ import UiFooter from '../organisms/UiFooter.vue';
 
   .section {
     min-height: 450px;
-    padding-left: 6rem;
-    padding-right: 6rem;
-
-    @include below-mobile {
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
+    @include page-content-layout-base();
 
     &--with-waves {
       min-height: 600px;

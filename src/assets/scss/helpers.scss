@@ -13,7 +13,7 @@
 }
 
 @mixin below-laptop {
-  @media only screen and  (max-width: 1279px) {
+  @media only screen and (max-width: 1279px) {
     @content;
   }
 }
@@ -29,3 +29,26 @@
     @content;
   }
 }
+
+@mixin page-content-layout-base {
+  max-width: 1980px;
+
+  margin: 0 auto;
+  padding-left: 6rem;
+  padding-right: 6rem;
+
+  @include below-mobile {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@mixin page-content-layout-large {
+  max-width: 1980px;
+
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+

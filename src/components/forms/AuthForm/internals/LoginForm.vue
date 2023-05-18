@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { UiBaseFormContainer, UiInput, UiButton } from '@/ui';
+import { UiBaseFormLayout, UiInput, UiButton } from '@/ui';
 import { ref } from 'vue';
 import { useAuthForm } from '@/composables/useAuthForm';
 import { useAuthStore } from '@/stores/useAuthStore';
@@ -17,7 +17,7 @@ const submit = async () => await authStore.login(state.value.email, state.value.
 </script>
 
 <template>
-  <UiBaseFormContainer submitText="Login" title="Hello again">
+  <UiBaseFormLayout submitText="Login" title="Hello again">
     <template #inputs>
       <UiInput
         label="Email"
@@ -38,5 +38,5 @@ const submit = async () => await authStore.login(state.value.email, state.value.
       <UiButton variant="success" size="big" expanded @click="submit">Login</UiButton>
       <UiButton variant="text" @click="openRegistrationForm()">Or create account</UiButton>
     </template>
-  </UiBaseFormContainer>
+  </UiBaseFormLayout>
 </template>

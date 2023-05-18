@@ -26,9 +26,11 @@ import UiVerticalRestaurantCard from './organisms/UiVerticalRestaurantCard.vue';
 import UiHorizontalRestaurantCard from './organisms/UiHorizontalRestaurantCard.vue';
 import UiFilterBar from './organisms/UiFilterBar.vue';
 
-// containers
-import UiBaseFormContainer from './containers/UiBaseFormContainer.vue';
-import UiLandingPageContainer from './containers/UiLandingPageContainer.vue';
+// layouts
+import UiBaseFormLayout from './layouts/UiBaseFormLayout.vue';
+
+// pages
+import UiLandingPage from './pages/UiLandingPage.vue';
 
 export {
   //  atoms
@@ -56,7 +58,8 @@ export {
   UiVerticalRestaurantCard,
   UiHorizontalRestaurantCard,
   UiFilterBar,
-  //  containers
-  UiBaseFormContainer,
-  UiLandingPageContainer
+  //  layouts
+  UiBaseFormLayout,
+  //  pages
+  UiLandingPage
 };

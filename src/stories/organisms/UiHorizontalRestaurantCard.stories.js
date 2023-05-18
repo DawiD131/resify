@@ -1,8 +1,8 @@
-import UiVerticalCard from '../../ui/organisms/UiVerticalRestaurantCard.vue';
+import UiHorizontalRestaurantCard from '../../ui/organisms/UiHorizontalRestaurantCard.vue';
 
 export default {
-  title: 'Ui/organisms/UiVerticalRestaurantCard',
-  component: UiVerticalCard,
+  title: 'Ui/organisms/UiHorizontalRestaurantCard',
+  component: UiHorizontalRestaurantCard,
   argTypes: {
     rate: {
       control: {
@@ -13,12 +13,12 @@ export default {
 };
 
 const Template = (args) => ({
-  components: { UiVerticalCard },
+  components: { UiHorizontalRestaurantCard },
 
   setup() {
     return { args };
   },
-  template: '<UiVerticalCard v-bind="args" />'
+  template: '<UiHorizontalRestaurantCard v-bind="args" />'
 });
 
 export const Primary = Template.bind({});

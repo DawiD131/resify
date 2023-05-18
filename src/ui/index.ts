@@ -23,6 +23,7 @@ import UiHeader from './organisms/UiHeader.vue';
 import UiMobileMenu from './organisms/UiMobileMenu.vue';
 import UiSlider from './organisms/UiSlider.vue';
 import UiVerticalRestaurantCard from './organisms/UiVerticalRestaurantCard.vue';
+import UiHorizontalRestaurantCard from './organisms/UiHorizontalRestaurantCard.vue';
 
 // containers
 import UiBaseFormContainer from './containers/UiBaseFormContainer.vue';
@@ -52,6 +53,7 @@ export {
   UiMobileMenu,
   UiSlider,
   UiVerticalRestaurantCard,
+  UiHorizontalRestaurantCard,
   //  containers
   UiBaseFormContainer,
   UiLandingPageContainer

@@ -31,6 +31,7 @@ import UiBaseFormLayout from './layouts/UiBaseFormLayout.vue';
 
 // pages
 import UiLandingPage from './pages/UiLandingPage.vue';
+import UiRestaurantsPage from './pages/UiRestaurantsPage.vue';
 
 export {
   //  atoms
@@ -61,5 +62,6 @@ export {
   //  layouts
   UiBaseFormLayout,
   //  pages
-  UiLandingPage
+  UiLandingPage,
+  UiRestaurantsPage
 };

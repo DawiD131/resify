@@ -75,6 +75,7 @@ const isDesktop = breakpoints.greater('tablet');
     justify-content: flex-end;
     align-items: center;
     flex-grow: 2;
+    gap: 0.8rem;
   }
 }
 </style>

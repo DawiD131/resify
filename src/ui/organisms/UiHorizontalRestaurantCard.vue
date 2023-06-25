@@ -49,8 +49,11 @@ const props = defineProps<Props>();
     display: flex;
     align-self: flex-end;
     flex-wrap: wrap;
-    height: 100%;
     gap: 0.8rem;
+
+    @include below-mobile() {
+      display: none;
+    }
   }
 }
 </style>

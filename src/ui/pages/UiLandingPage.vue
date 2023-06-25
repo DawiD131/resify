@@ -50,11 +50,11 @@ import UiFooter from '../organisms/UiFooter.vue';
     justify-content: space-between;
     padding: 12rem 0 5rem 0;
 
-    @include page-content-layout-base();
-
     @include below-mobile() {
       padding: 10rem 0 3rem 0;
     }
+
+    @include page-content-layout-base();
 
     .hero-image {
       max-width: 700px;

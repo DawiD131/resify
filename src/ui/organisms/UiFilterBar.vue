@@ -56,6 +56,11 @@ const props = defineProps<Props>();
   max-width: 320px;
   padding: 2.5rem 2rem;
 
+  @include below-tablet() {
+    // todo: implement rwd
+    display: none;
+  }
+
   .tags-box {
     display: flex;
     align-self: flex-end;

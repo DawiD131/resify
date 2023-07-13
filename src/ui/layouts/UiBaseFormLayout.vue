@@ -4,9 +4,12 @@ import { UiButton, UiHeading } from '@/ui';
 interface Props {
   submitText?: string;
   title: string;
+  withShadow: boolean;
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  withShadow: false
+});
 
 const emit = defineEmits<{
   (e: 'submit'): void;
@@ -14,7 +17,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <div class="UiBaseFormLayout">
+  <div class="UiBaseFormLayout" :class="{ withShadow: props.withShadow }">
     <form>
       <UiHeading size="h3" class="header" color="dark">{{ props.title }}</UiHeading>
       <div class="inputs">
@@ -38,10 +41,14 @@ const emit = defineEmits<{
 @import '../../assets/scss/helpers.scss';
 
 .UiBaseFormLayout {
-  background: $white;
   padding: 3rem 2rem;
-  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.25);
-  border-radius: $base-radius;
+  background: transparent;
+
+  &.withShadow {
+    background: $white;
+    box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.25);
+    border-radius: $base-radius;
+  }
 
   .header {
     margin-bottom: 2rem;

@@ -8,7 +8,7 @@ const state = ref('');
 </script>
 
 <template>
-  <UiBaseFormLayout submitText="Login" title="Hello">
+  <UiBaseFormLayout submitText="Login" title="Hello" withShadow>
     <template #inputs>
       <UiInput
         label="First name"

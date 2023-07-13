@@ -13,7 +13,8 @@ const emit = defineEmits<{
   (e: 'click'): void;
 }>();
 
-const color = computed(() => props.isActive && 'primary');
+//todo: check types below
+const color = computed(() => (props.isActive ? 'primary' : 'dark') as any);
 </script>
 
 <template>

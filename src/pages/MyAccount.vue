@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { UiMyAccountPage, UiAccountSidebar, UiTabs } from '@/ui';
 import Header from '@/components/organisms/Header.vue';
+import PersonalDataForm from '@/components/forms/PersonalDataForm.vue';
+import ChangePasswordForm from '@/components/forms/ChangePasswordForm.vue';
 
 const navItems = [
   {
@@ -42,8 +44,12 @@ const tabsConfig = [
     </template>
     <template #bottom-content>
       <UiTabs :tabsConfig="tabsConfig">
-        <template #personal-details>Personal details</template>
-        <template #change-password>Change password</template>
+        <template #personal-details>
+          <PersonalDataForm />
+        </template>
+        <template #change-password>
+          <ChangePasswordForm />
+        </template>
       </UiTabs>
     </template>
   </UiMyAccountPage>

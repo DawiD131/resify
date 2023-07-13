@@ -11,7 +11,8 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  withoutRating: false
+  withoutRating: false,
+  rate: 1
 });
 </script>
 

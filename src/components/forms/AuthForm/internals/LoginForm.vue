@@ -17,7 +17,7 @@ const submit = async () => await authStore.login(state.value.email, state.value.
 </script>
 
 <template>
-  <UiBaseFormLayout submitText="Login" title="Hello again">
+  <UiBaseFormLayout submitText="Login" title="Hello again" withShadow>
     <template #inputs>
       <UiInput
         label="Email"

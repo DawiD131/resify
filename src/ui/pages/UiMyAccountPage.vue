@@ -10,7 +10,7 @@ import { UiFooter } from '@/ui';
         <div>
           <slot name="top-left" />
         </div>
-        <div>
+        <div class="image-box">
           <img src="../../assets/account.svg" alt="account-picture" />
         </div>
       </div>
@@ -31,6 +31,13 @@ import { UiFooter } from '@/ui';
 
     @include page-content-layout-base();
   }
+
+  .image-box {
+    @include below-tablet {
+      display: none;
+    }
+  }
+
   .top-content {
     display: flex;
     justify-content: space-between;

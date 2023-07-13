@@ -9,7 +9,6 @@ interface Props {
   title: string;
   thumbUrl: string;
   tags: string[];
-  description: string;
 }
 
 const props = defineProps<Props>();

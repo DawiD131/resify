@@ -3,11 +3,14 @@ import { type TextSizes, type TextColors, textColors, textSizes } from './_inter
 import { computed } from 'vue';
 
 interface Props {
-  size: TextSizes;
-  color: TextColors;
+  size?: TextSizes;
+  color?: TextColors;
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  size: 'xs',
+  color: 'light'
+});
 
 const sizeClass = computed(() => textSizes[props.size]);
 const colorClass = computed(() => textColors[props.color]);

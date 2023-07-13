@@ -48,7 +48,7 @@ import UiFooter from '../organisms/UiFooter.vue';
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 12rem 0 5rem 0;
+    margin-top: 12rem;
 
     @include below-mobile() {
       padding: 10rem 0 3rem 0;

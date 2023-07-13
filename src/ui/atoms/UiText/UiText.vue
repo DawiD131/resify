@@ -9,7 +9,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   size: 'xs',
-  color: 'light'
+  color: 'dark'
 });
 
 const sizeClass = computed(() => textSizes[props.size]);

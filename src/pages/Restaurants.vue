@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { UiRestaurantsPage, UiButton, UiFilterBar, UiHorizontalRestaurantCard } from '@/ui';
+import { UiRestaurantsPage, UiFilterBar, UiHorizontalRestaurantCard } from '@/ui';
 import Header from '@/components/organisms/Header.vue';
 import _ from 'lodash';
 </script>
@@ -7,16 +7,7 @@ import _ from 'lodash';
 <template>
   <UiRestaurantsPage>
     <template #header>
-      <Header>
-        <template #actions>
-          <UiButton variant="secondary">Logout</UiButton>
-          <UiButton variant="secondary">My account</UiButton>
-        </template>
-        <template #mobile-menu-actions>
-          <UiButton variant="secondary" expanded size="big">My account</UiButton>
-          <UiButton variant="secondary" expanded size="big">Logout</UiButton>
-        </template>
-      </Header>
+      <Header />
     </template>
     <template #side>
       <UiFilterBar

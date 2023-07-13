@@ -3,7 +3,7 @@ import { UiFooter } from '@/ui';
 </script>
 
 <template>
-  <main class="UiRestaurantDetailsPage">
+  <div class="UiRestaurantDetailsPage">
     <slot name="header" />
     <main class="main-content">
       <div>
@@ -23,7 +23,7 @@ import { UiFooter } from '@/ui';
       </div>
     </main>
     <UiFooter />
-  </main>
+  </div>
 </template>
 
 <style lang="scss" scoped>

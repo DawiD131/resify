@@ -4,12 +4,15 @@ import UiThumbnail from '../atoms/UiThumbnail.vue';
 import UiText from '../atoms/UiText/UiText.vue';
 
 interface Props {
-  rate: 1 | 2 | 3 | 4 | 5;
+  rate?: 1 | 2 | 3 | 4 | 5;
   title: string;
   thumbUrl: string;
+  withoutRating?: boolean;
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  withoutRating: false
+});
 </script>
 
 <template>
@@ -17,7 +20,7 @@ const props = defineProps<Props>();
     <UiThumbnail size="small" :src="props.thumbUrl" alt="restaurant logo" />
     <div class="info-box">
       <UiText size="s" color="dark">{{ props.title }}</UiText>
-      <UiRating :rate="props.rate" />
+      <UiRating :rate="props.rate" v-if="!props.withoutRating" />
     </div>
   </div>
 </template>

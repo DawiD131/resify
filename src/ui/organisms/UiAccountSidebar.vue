@@ -16,7 +16,7 @@ const props = defineProps<Props>();
 </script>
 <template>
   <div class="UiAccountSidebar">
-    <UiRatingWithTitle :title="props.userName" :thumbUrl="props.userThumbnailUrl" />
+    <UiRatingWithTitle :title="props.userName" :thumbUrl="props.userThumbnailUrl" withoutRating />
     <div class="nav-items">
       <UiButton
         variant="text"

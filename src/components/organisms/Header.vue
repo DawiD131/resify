@@ -21,7 +21,9 @@ const mobileNavStore = useMobileNavStore();
       <MobileMenu>
         <template #actions>
           <slot name="mobile-menu-actions">
-            <UiButton variant="secondary" expanded size="big">My account</UiButton>
+            <UiButton variant="secondary" expanded size="big" @click="$router.push('/my-account')"
+              >My account</UiButton
+            >
             <UiButton variant="secondary" expanded size="big">Logout</UiButton>
           </slot>
         </template>

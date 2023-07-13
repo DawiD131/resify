@@ -37,6 +37,7 @@ import { UiFooter } from '@/ui';
   }
 
   .bottom-content {
+    margin-top: 6rem;
     width: 100%;
   }
 }

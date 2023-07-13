@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { UiMyAccountPage, UiAccountSidebar } from '@/ui';
+import { UiMyAccountPage, UiAccountSidebar, UiTabs } from '@/ui';
 import Header from '@/components/organisms/Header.vue';
 
 const navItems = [
@@ -16,6 +16,17 @@ const navItems = [
     to: ''
   }
 ];
+
+const tabsConfig = [
+  {
+    displayName: 'Personal details',
+    slotName: 'personal-details'
+  },
+  {
+    displayName: 'Change password',
+    slotName: 'change-password'
+  }
+];
 </script>
 <template>
   <UiMyAccountPage>
@@ -28,6 +39,12 @@ const navItems = [
         userName="John Doe"
         :navItems="navItems"
       />
+    </template>
+    <template #bottom-content>
+      <UiTabs :tabsConfig="tabsConfig">
+        <template #personal-details>Personal details</template>
+        <template #change-password>Change password</template>
+      </UiTabs>
     </template>
   </UiMyAccountPage>
 </template>

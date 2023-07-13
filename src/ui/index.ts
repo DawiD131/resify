@@ -31,6 +31,7 @@ import UiAccountSidebar from './organisms/UiAccountSidebar.vue';
 
 // layouts
 import UiBaseFormLayout from './layouts/UiBaseFormLayout.vue';
+import UiTabs from './layouts/UiTabs/UiTabs.vue';
 
 // pages
 import UiLandingPage from './pages/UiLandingPage.vue';
@@ -69,6 +70,7 @@ export {
   UiAccountSidebar,
   //  layouts
   UiBaseFormLayout,
+  UiTabs,
   //  pages
   UiLandingPage,
   UiRestaurantsPage,

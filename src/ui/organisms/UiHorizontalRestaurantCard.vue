@@ -9,10 +9,13 @@ interface Props {
   title: string;
   thumbUrl: string;
   tags: string[];
-  description: string;
 }
 
 const props = defineProps<Props>();
+
+const emit = defineEmits<{
+  (e: 'seeDetails'): void;
+}>();
 </script>
 
 <template>
@@ -23,7 +26,7 @@ const props = defineProps<Props>();
     </div>
     <div class="action-box">
       <UiIcon color="danger" variant="heart" size="xl" />
-      <UiButton variant="primary">See more</UiButton>
+      <UiButton variant="primary" @click="emit('seeDetails')">See more</UiButton>
     </div>
   </div>
 </template>

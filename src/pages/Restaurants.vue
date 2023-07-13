@@ -9,16 +9,12 @@ import _ from 'lodash';
     <template #header>
       <Header>
         <template #actions>
-          <UiButton variant="secondary" @click="() => console.log('logout')">Logout</UiButton>
-          <UiButton variant="secondary" @click="() => console.log('logout')">My account</UiButton>
+          <UiButton variant="secondary">Logout</UiButton>
+          <UiButton variant="secondary">My account</UiButton>
         </template>
         <template #mobile-menu-actions>
-          <UiButton variant="secondary" @click="() => console.log('logout')" expanded size="big"
-            >My account</UiButton
-          >
-          <UiButton variant="secondary" @click="() => console.log('logout')" expanded size="big"
-            >Logout</UiButton
-          >
+          <UiButton variant="secondary" expanded size="big">My account</UiButton>
+          <UiButton variant="secondary" expanded size="big">Logout</UiButton>
         </template>
       </Header>
     </template>
@@ -72,6 +68,7 @@ import _ from 'lodash';
         title="Restaurant name"
         thumb-url="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/restaurant-animated-logo-template-design-6da604bf6329fd9931237066088d59d8_screen.jpg?ts=1601244370"
         :tags="['italian', 'pizza', 'pasta', 'drinks']"
+        @click="$router.push('restaurant-details')"
       />
     </template>
   </UiRestaurantsPage>

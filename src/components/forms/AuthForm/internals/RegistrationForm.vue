@@ -2,6 +2,8 @@
 import { UiBaseFormLayout, UiInput, UiButton } from '@/ui';
 import { useAuthFormState, useUserStore } from '@/composables';
 import { ref } from 'vue';
+import { useRegisterValidators } from '@/validators';
+import useVuelidate from '@vuelidate/core';
 
 const { openLoginForm } = useAuthFormState();
 const state = ref({
@@ -12,9 +14,17 @@ const state = ref({
   isBusiness: false
 });
 
+const rules = useRegisterValidators();
+const $v = useVuelidate(rules, state, { $lazy: true });
+
 const userStore = useUserStore();
 
-const submit = async () => await userStore.register(state.value);
+const submit = async () => {
+  $v.value.$touch();
+  if (!$v.value.$invalid) {
+    await userStore.register(state.value);
+  }
+};
 </script>
 
 <template>
@@ -24,29 +34,34 @@ const submit = async () => await userStore.register(state.value);
         label="First name"
         name="firstName"
         errorMessage="Invalid field"
-        :isValid="true"
+        :isValid="!$v.firstName.$invalid"
         v-model="state.firstName"
+        @blur="$v.firstName.$touch()"
       />
       <UiInput
         label="Last name"
         name="lastName"
         errorMessage="Invalid field"
-        :isValid="true"
+        :isValid="!$v.lastName.$invalid"
         v-model="state.lastName"
+        @blur="$v.lastName.$touch()"
       />
       <UiInput
         label="Email"
         name="email"
         errorMessage="Invalid field"
-        :isValid="true"
+        :isValid="!$v.email.$invalid"
         v-model="state.email"
+        @blur="$v.email.$touch()"
       />
       <UiInput
         label="Password"
         name="password"
         errorMessage="Invalid field"
-        :isValid="true"
+        :isValid="!$v.pwd.$invalid"
         v-model="state.pwd"
+        @blur="$v.pwd.$touch()"
+        type="password"
       />
     </template>
     <template #actions>

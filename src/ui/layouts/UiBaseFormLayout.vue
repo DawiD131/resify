@@ -4,7 +4,7 @@ import { UiButton, UiHeading } from '@/ui';
 interface Props {
   submitText?: string;
   title: string;
-  withShadow: boolean;
+  withShadow?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {

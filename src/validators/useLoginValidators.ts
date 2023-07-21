@@ -1,7 +1,7 @@
 import { required, email, minLength } from '@vuelidate/validators';
 
 export const useLoginValidators = () => {
-  const rules = {
+  return {
     email: {
       required,
       email
@@ -10,9 +10,5 @@ export const useLoginValidators = () => {
       required,
       minLength: minLength(5)
     }
-  };
-
-  return {
-    rules
   };
 };

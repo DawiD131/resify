@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import { UiBaseFormLayout, UiInput, UiButton } from '@/ui';
 import { ref } from 'vue';
-import { useAuthStore, useAuthFormState, useLoginValidators } from '@/composables';
+import { useAuthStore, useAuthFormState } from '@/composables';
 import { useVuelidate } from '@vuelidate/core';
+import { useLoginValidators } from '@/validators';
 
-const { rules } = useLoginValidators();
+const rules = useLoginValidators();
 const { openRegistrationForm } = useAuthFormState();
 const authStore = useAuthStore();
 
@@ -16,7 +17,8 @@ const state = ref({
 const $v = useVuelidate(rules, state, { $lazy: true });
 
 const submit = async () => {
-  if ($v.value.$invalid) {
+  $v.value.$touch();
+  if (!$v.value.$invalid) {
     await authStore.login(state.value.email, state.value.password);
   }
 };

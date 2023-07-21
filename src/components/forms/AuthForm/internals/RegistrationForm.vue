@@ -1,10 +1,20 @@
 <script lang="ts" setup>
 import { UiBaseFormLayout, UiInput, UiButton } from '@/ui';
-import { useAuthForm } from '@/composables/useAuthForm';
+import { useAuthFormState, useUserStore } from '@/composables';
 import { ref } from 'vue';
 
-const { openLoginForm } = useAuthForm();
-const state = ref('');
+const { openLoginForm } = useAuthFormState();
+const state = ref({
+  email: '',
+  pwd: '',
+  firstName: '',
+  lastName: '',
+  isBusiness: false
+});
+
+const userStore = useUserStore();
+
+const submit = async () => await userStore.register(state.value);
 </script>
 
 <template>
@@ -15,32 +25,32 @@ const state = ref('');
         name="firstName"
         errorMessage="Invalid field"
         :isValid="true"
-        v-model="state"
+        v-model="state.firstName"
       />
       <UiInput
         label="Last name"
         name="lastName"
         errorMessage="Invalid field"
         :isValid="true"
-        v-model="state"
+        v-model="state.lastName"
       />
       <UiInput
         label="Email"
         name="email"
         errorMessage="Invalid field"
         :isValid="true"
-        v-model="state"
+        v-model="state.email"
       />
       <UiInput
         label="Password"
         name="password"
         errorMessage="Invalid field"
         :isValid="true"
-        v-model="state"
+        v-model="state.pwd"
       />
     </template>
     <template #actions>
-      <UiButton variant="success" size="big" expanded>Register</UiButton>
+      <UiButton variant="success" size="big" expanded @click="submit()">Register</UiButton>
       <UiButton variant="text" @click="openLoginForm()">Or login</UiButton>
     </template>
   </UiBaseFormLayout>

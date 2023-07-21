@@ -1,8 +1,8 @@
 import { computed, ref } from 'vue';
+import { createGlobalState } from '@vueuse/core';
 
-const isLoginFormOpen = ref(true);
-
-export const useAuthForm = () => {
+export const useAuthFormState = createGlobalState(() => {
+  const isLoginFormOpen = ref(true);
   const openLoginForm = () => (isLoginFormOpen.value = true);
   const openRegistrationForm = () => (isLoginFormOpen.value = false);
 
@@ -11,4 +11,4 @@ export const useAuthForm = () => {
     openLoginForm,
     openRegistrationForm
   };
-};
+});

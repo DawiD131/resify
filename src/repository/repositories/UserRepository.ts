@@ -1,27 +1,14 @@
-import { httpClient, type HttpClient } from '@/http-client';
+import { type HttpClient } from '@/http-client';
+import { UserDto } from '@/repository/dto/UserDto';
 
 export class UserRepository {
   constructor(private httpClient: HttpClient) {}
 
-  public async register(email: string, password: string, firstName: string, lastName: string) {
-    try {
-      await httpClient.post('/user/register', {
-        email,
-        pwd: password,
-        firstName,
-        lastName
-      });
-    } catch (e) {
-      console.log(e);
-    }
+  public async register(user: UserDto) {
+    await this.httpClient.post('/user/register', user);
   }
 
   public async getUser() {
-    try {
-      const resp = await httpClient.get('/user');
-      return resp;
-    } catch (e) {
-      console.log(e);
-    }
+    return await this.httpClient.get('/user');
   }
 }

@@ -1,30 +1,80 @@
 <script lang="ts" setup>
 import { UiHeader, UiButton } from '@/ui';
 import MobileMenu from './MobileMenu.vue';
-import { useMobileNavStore } from '@/stores/useMobileNavStore';
+import { useMobileNavState } from '@/composables/useMobileNavState';
+import { useAuthStore } from '@/composables';
+import { useModalStore } from '@/features/modals/stores/useModalStore';
 
-const mobileNavStore = useMobileNavStore();
+const modalStore = useModalStore();
+const authStore = useAuthStore();
+const { setState, state } = useMobileNavState();
+
+const logout = async () => await authStore.logout();
 </script>
 
 <template>
-  <UiHeader
-    @hamburgerClick="mobileNavStore.setState(!mobileNavStore.state)"
-    :hamburger-state="mobileNavStore.state"
-  >
+  <UiHeader @hamburgerClick="setState(!state)" :hamburger-state="state">
     <template #actions>
       <slot name="actions">
-        <UiButton variant="secondary">Logout</UiButton>
-        <UiButton variant="secondary" @click="$router.push('/my-account')">My account</UiButton>
+        <UiButton
+          variant="secondary"
+          @click="$router.push('/my-account')"
+          v-if="authStore.isLoggedIn"
+          >My account</UiButton
+        >
+        <UiButton variant="secondary" @click="logout" v-if="authStore.isLoggedIn">Logout</UiButton>
+        <UiButton
+          v-if="!authStore.isLoggedIn"
+          variant="secondary"
+          size="medium"
+          @click="modalStore.setModalState('authModal', true)"
+          >Login</UiButton
+        >
       </slot>
     </template>
     <template #mobile-nav>
       <MobileMenu>
         <template #actions>
           <slot name="mobile-menu-actions">
-            <UiButton variant="secondary" expanded size="big" @click="$router.push('/my-account')"
+            <UiButton
+              variant="secondary"
+              expanded
+              size="big"
+              @click="
+                () => {
+                  $router.push('/my-account');
+                  setState(false);
+                }
+              "
+              v-if="authStore.isLoggedIn"
               >My account</UiButton
             >
-            <UiButton variant="secondary" expanded size="big">Logout</UiButton>
+            <UiButton
+              variant="secondary"
+              expanded
+              size="big"
+              v-if="authStore.isLoggedIn"
+              @click="
+                () => {
+                  logout();
+                  setState(false);
+                }
+              "
+              >Logout</UiButton
+            >
+            <UiButton
+              expanded
+              variant="secondary"
+              size="big"
+              @click="
+                () => {
+                  modalStore.setModalState('authModal', true);
+                  setState(false);
+                }
+              "
+              v-else
+              >Login</UiButton
+            >
           </slot>
         </template>
       </MobileMenu>

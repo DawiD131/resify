@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Index from '../pages/Index.vue';
+import { useAuthStore } from '@/composables';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,16 +25,16 @@ const router = createRouter({
       name: 'my-account',
       component: () => import('../pages/MyAccount.vue')
     }
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue')
-    // }
   ]
+});
+
+router.beforeEach(async (to, from, next) => {
+  const authStore = useAuthStore();
+  await authStore.tryToFetchUser();
+
+  if (authStore.isLoggedIn && to.name === 'index') next({ name: 'restaurants' });
+  if (!authStore.isLoggedIn && to.name !== 'index') next({ name: 'index' });
+  else next();
 });
 
 export default router;

@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { UiSearchInput, UiMobileMenu } from '@/ui';
-import { useMobileNavStore } from '@/stores/useMobileNavStore';
+import { useMobileNavState } from '@/composables/useMobileNavState';
 
-const mobileNavStore = useMobileNavStore();
+const { state } = useMobileNavState();
 </script>
 
 <template>
-  <UiMobileMenu :is-open="mobileNavStore.state">
+  <UiMobileMenu :is-open="state">
     <template #content-top>
       <UiSearchInput placeholder="search by restaurant name" :is-loading="false" />
       <slot name="actions" />

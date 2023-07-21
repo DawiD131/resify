@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import LoginForm from './internals/LoginForm.vue';
 import RegistrationForm from './internals/RegistrationForm.vue';
-import { useAuthForm } from '@/composables/useAuthForm';
+import { useAuthFormState } from '@/composables';
 
-const { isLoginFormOpen } = useAuthForm();
+const { isLoginFormOpen } = useAuthFormState();
 </script>
 
 <template>

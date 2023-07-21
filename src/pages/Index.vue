@@ -1,34 +1,11 @@
 <script lang="ts" setup>
 import { UiLandingPage, UiHeading, UiButton, UiVerticalRestaurantCard, UiSlider } from '@/ui';
 import _ from 'lodash';
-import { useModalStore } from '@/features/modals/stores/useModalStore';
-import { useMobileNavStore } from '@/stores/useMobileNavStore';
 import Header from '@/components/organisms/Header.vue';
-
-const modalStore = useModalStore();
-const mobileNavStore = useMobileNavStore();
 </script>
 
 <template>
-  <Header>
-    <template #actions>
-      <UiButton
-        variant="secondary"
-        size="medium"
-        @click="modalStore.setModalState('authModal', true)"
-        >Login</UiButton
-      >
-    </template>
-    <template #mobile-menu-actions>
-      <UiButton
-        expanded
-        variant="secondary"
-        size="big"
-        @click="modalStore.setModalState('authModal', true)"
-        >Login</UiButton
-      >
-    </template>
-  </Header>
+  <Header />
   <UiLandingPage>
     <template #hero>
       <UiHeading size="h1" color="dark">Easily book tables at your favorite restaurants!</UiHeading>

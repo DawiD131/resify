@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { UiBaseFormLayout, UiInput, UiButton } from '@/ui';
 import { ref } from 'vue';
-import { useAuthForm } from '@/composables/useAuthForm';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useAuthStore, useAuthFormState } from '@/composables';
 
 const authStore = useAuthStore();
 
@@ -11,7 +10,7 @@ const state = ref({
   password: ''
 });
 
-const { openRegistrationForm } = useAuthForm();
+const { openRegistrationForm } = useAuthFormState();
 
 const submit = async () => await authStore.login(state.value.email, state.value.password);
 </script>

@@ -23,7 +23,30 @@ const router = createRouter({
     {
       path: '/my-account',
       name: 'my-account',
-      component: () => import('../pages/MyAccount.vue')
+      redirect: { name: 'personal-data' },
+      component: () => import('../pages/MyAccount.vue'),
+      children: [
+        {
+          name: 'personal-data',
+          path: 'personal-data',
+          component: () => import('../components/account/PersonalData.vue')
+        },
+        {
+          name: 'reservations',
+          path: 'reservations',
+          component: () => import('../components/account/Reservations.vue')
+        },
+        {
+          name: 'favourite-restaurants',
+          path: 'favourite-restaurants',
+          component: () => import('../components/account/FavouriteRestaurants.vue')
+        },
+        {
+          name: 'restaurant-registration',
+          path: 'restaurant-registration',
+          component: () => import('../components/account/RestaurantRegistration.vue')
+        }
+      ]
     }
   ]
 });

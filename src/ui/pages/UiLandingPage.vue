@@ -32,7 +32,6 @@ import UiFooter from '../organisms/UiFooter.vue';
         </div>
       </section>
     </div>
-
     <UiFooter />
   </main>
 </template>
@@ -51,7 +50,7 @@ import UiFooter from '../organisms/UiFooter.vue';
     margin-top: 12rem;
 
     @include below-mobile() {
-      padding: 10rem 0 3rem 0;
+      padding: 0 0 3rem 0;
     }
 
     @include page-content-layout-base();

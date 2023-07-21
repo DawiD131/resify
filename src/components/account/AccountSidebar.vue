@@ -12,15 +12,19 @@ const userName = computed(
 const navItems = [
   {
     label: 'Personal data',
-    to: ''
+    to: 'personal-data'
+  },
+  {
+    label: 'My reservations',
+    to: 'reservations'
   },
   {
     label: 'Favourite restaurants',
-    to: ''
+    to: 'favourite-restaurants'
   },
   {
-    label: 'My orders',
-    to: ''
+    label: 'Register restaurant',
+    to: 'restaurant-registration'
   }
 ];
 </script>

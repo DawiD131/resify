@@ -1,8 +1,11 @@
 <script lang="ts" setup>
 import { UiBaseFormLayout, UiInput, UiButton } from '@/ui';
 import { ref } from 'vue';
-import { useAuthStore, useAuthFormState } from '@/composables';
+import { useAuthStore, useAuthFormState, useLoginValidators } from '@/composables';
+import { useVuelidate } from '@vuelidate/core';
 
+const { rules } = useLoginValidators();
+const { openRegistrationForm } = useAuthFormState();
 const authStore = useAuthStore();
 
 const state = ref({
@@ -10,9 +13,13 @@ const state = ref({
   password: ''
 });
 
-const { openRegistrationForm } = useAuthFormState();
+const $v = useVuelidate(rules, state, { $lazy: true });
 
-const submit = async () => await authStore.login(state.value.email, state.value.password);
+const submit = async () => {
+  if ($v.value.$invalid) {
+    await authStore.login(state.value.email, state.value.password);
+  }
+};
 </script>
 
 <template>
@@ -22,15 +29,18 @@ const submit = async () => await authStore.login(state.value.email, state.value.
         label="Email"
         name="email"
         errorMessage="Invalid field"
-        :isValid="true"
+        :isValid="!$v.email.$invalid"
         v-model="state.email"
+        @blur="$v.email.$touch()"
       />
       <UiInput
         label="Password"
         name="password"
         errorMessage="Invalid field"
-        :isValid="true"
+        :isValid="!$v.password.$invalid"
         v-model="state.password"
+        @blur="$v.password.$touch()"
+        type="password"
       />
     </template>
     <template #actions>

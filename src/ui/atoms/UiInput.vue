@@ -7,9 +7,13 @@ interface Props {
   isValid: boolean;
   errorMessage: string;
   modelValue: string | number;
+  type?: 'text' | 'password' | 'number';
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  type: 'text'
+});
+
 const emit = defineEmits(['update:modelValue']);
 
 const value = computed({
@@ -25,7 +29,13 @@ const value = computed({
 <template>
   <label class="UiInput">
     <label class="input-container">
-      <input v-model="value" class="input" :placeholder="props.label" />
+      <input
+        v-model="value"
+        class="input"
+        :placeholder="props.label"
+        @blur="emit('blur')"
+        :type="props.type"
+      />
       <label class="label">{{ props.label }}</label>
     </label>
     <span class="error-msg" v-if="!props.isValid">{{ props.errorMessage }}</span>

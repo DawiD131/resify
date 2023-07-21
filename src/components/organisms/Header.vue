@@ -15,67 +15,60 @@ const logout = async () => await authStore.logout();
 <template>
   <UiHeader @hamburgerClick="setState(!state)" :hamburger-state="state">
     <template #actions>
-      <slot name="actions">
-        <UiButton
-          variant="secondary"
-          @click="$router.push('/my-account')"
-          v-if="authStore.isLoggedIn"
-          >My account</UiButton
-        >
-        <UiButton variant="secondary" @click="logout" v-if="authStore.isLoggedIn">Logout</UiButton>
-        <UiButton
-          v-if="!authStore.isLoggedIn"
-          variant="secondary"
-          size="medium"
-          @click="modalStore.setModalState('authModal', true)"
-          >Login</UiButton
-        >
-      </slot>
+      <UiButton variant="secondary" @click="$router.push('/my-account')" v-if="authStore.isLoggedIn"
+        >My account</UiButton
+      >
+      <UiButton variant="secondary" @click="logout" v-if="authStore.isLoggedIn">Logout</UiButton>
+      <UiButton
+        v-if="!authStore.isLoggedIn"
+        variant="secondary"
+        size="medium"
+        @click="modalStore.setModalState('authModal', true)"
+        >Login</UiButton
+      >
     </template>
     <template #mobile-nav>
       <MobileMenu>
         <template #actions>
-          <slot name="mobile-menu-actions">
-            <UiButton
-              variant="secondary"
-              expanded
-              size="big"
-              @click="
-                () => {
-                  $router.push('/my-account');
-                  setState(false);
-                }
-              "
-              v-if="authStore.isLoggedIn"
-              >My account</UiButton
-            >
-            <UiButton
-              variant="secondary"
-              expanded
-              size="big"
-              v-if="authStore.isLoggedIn"
-              @click="
-                () => {
-                  logout();
-                  setState(false);
-                }
-              "
-              >Logout</UiButton
-            >
-            <UiButton
-              expanded
-              variant="secondary"
-              size="big"
-              @click="
-                () => {
-                  modalStore.setModalState('authModal', true);
-                  setState(false);
-                }
-              "
-              v-else
-              >Login</UiButton
-            >
-          </slot>
+          <UiButton
+            variant="secondary"
+            expanded
+            size="big"
+            @click="
+              () => {
+                $router.push('/my-account');
+                setState(false);
+              }
+            "
+            v-if="authStore.isLoggedIn"
+            >My account</UiButton
+          >
+          <UiButton
+            variant="secondary"
+            expanded
+            size="big"
+            v-if="authStore.isLoggedIn"
+            @click="
+              () => {
+                logout();
+                setState(false);
+              }
+            "
+            >Logout</UiButton
+          >
+          <UiButton
+            expanded
+            variant="secondary"
+            size="big"
+            @click="
+              () => {
+                modalStore.setModalState('authModal', true);
+                setState(false);
+              }
+            "
+            v-else
+            >Login</UiButton
+          >
         </template>
       </MobileMenu>
     </template>

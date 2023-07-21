@@ -2,6 +2,13 @@
 import { UiLandingPage, UiHeading, UiButton, UiVerticalRestaurantCard, UiSlider } from '@/ui';
 import _ from 'lodash';
 import Header from '@/components/organisms/Header.vue';
+import { useModalStore } from '@/features/modals/stores/useModalStore';
+
+const modalStore = useModalStore();
+
+const openLoginModal = () => {
+  modalStore.setModalState('authModal', true);
+};
 </script>
 
 <template>
@@ -9,7 +16,7 @@ import Header from '@/components/organisms/Header.vue';
   <UiLandingPage>
     <template #hero>
       <UiHeading size="h1" color="dark">Easily book tables at your favorite restaurants!</UiHeading>
-      <UiButton variant="primary" size="big">Let's started!</UiButton>
+      <UiButton variant="primary" size="big" @click="openLoginModal">Let's started!</UiButton>
     </template>
     <template #mid-section-heading>
       <UiHeading size="h2" color="light">Best rated</UiHeading>

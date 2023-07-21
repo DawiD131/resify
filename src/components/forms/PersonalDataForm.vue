@@ -1,12 +1,15 @@
 <script lang="ts" setup>
 import { UiBaseFormLayout, UiInput, UiButton } from '@/ui';
 import { ref } from 'vue';
+import { useUserStore } from '@/composables';
+
+const userStore = useUserStore();
 
 const state = ref({
-  name: '',
-  surname: '',
+  name: userStore.currentUser?.firstName ?? '',
+  surname: userStore.currentUser?.lastName ?? '',
   age: 0,
-  email: ''
+  email: userStore.currentUser?.email ?? ''
 });
 
 const submit = () => console.log('personal data updated!');
@@ -35,6 +38,7 @@ const submit = () => console.log('personal data updated!');
         errorMessage="Invalid field"
         :isValid="true"
         v-model="state.age"
+        type="number"
       />
       <UiInput
         label="Email"

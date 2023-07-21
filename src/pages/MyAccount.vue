@@ -1,23 +1,9 @@
 <script lang="ts" setup>
-import { UiMyAccountPage, UiAccountSidebar, UiTabs } from '@/ui';
+import { UiMyAccountPage, UiTabs } from '@/ui';
 import Header from '@/components/organisms/Header.vue';
 import PersonalDataForm from '@/components/forms/PersonalDataForm.vue';
 import ChangePasswordForm from '@/components/forms/ChangePasswordForm.vue';
-
-const navItems = [
-  {
-    label: 'Personal data',
-    to: ''
-  },
-  {
-    label: 'Favourite restaurants',
-    to: ''
-  },
-  {
-    label: 'My orders',
-    to: ''
-  }
-];
+import AccountSidebar from '@/components/account/AccountSidebar.vue';
 
 const tabsConfig = [
   {
@@ -36,11 +22,7 @@ const tabsConfig = [
       <Header />
     </template>
     <template #top-left>
-      <UiAccountSidebar
-        userThumbnailUrl="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
-        userName="John Doe"
-        :navItems="navItems"
-      />
+      <AccountSidebar />
     </template>
     <template #bottom-content>
       <UiTabs :tabsConfig="tabsConfig">

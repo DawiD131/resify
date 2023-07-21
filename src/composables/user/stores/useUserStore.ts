@@ -1,10 +1,21 @@
 import { defineStore } from 'pinia';
 import { useApiRepository } from '@/composables/useApiRepository';
-import { ref } from 'vue';
+import { type Ref, ref } from 'vue';
 import { UserDto } from '@/repository/dto/UserDto';
 import { useAuthFormState } from '@/composables/auth';
 
-export const useUserStore = defineStore('useUserStore', () => {
+interface UseUserStore {
+  currentUser: Ref<{
+    email: string;
+    firstName: string;
+    lastName: string;
+    isBusiness: boolean;
+  } | null>;
+  getUser: () => Promise<void>;
+  register: (user: UserDto) => Promise<void>;
+}
+
+export const useUserStore = defineStore<'useUserStore', UseUserStore>('useUserStore', () => {
   const { userRepository } = useApiRepository();
   const currentUser = ref(null);
 

@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<Props>(), {
   type: 'text'
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'blur']);
 
 const value = computed({
   get() {

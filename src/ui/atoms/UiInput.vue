@@ -89,9 +89,11 @@ const value = computed({
   }
 
   .error-msg {
+    position: absolute;
+    bottom: -1.8rem;
+    left: 1.2rem;
     color: $danger;
     font-size: 1.2rem;
-    padding: 0.3rem 0 0 1.2rem;
   }
 }
 </style>

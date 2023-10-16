@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { UiTabs } from '@/ui';
+import RestaurantDataForm from '@/components/forms/RestaurantDataForm.vue';
 const tabsConfig = [
   {
     displayName: 'Restaurant registration',
@@ -11,7 +12,7 @@ const tabsConfig = [
 <template>
   <UiTabs :tabsConfig="tabsConfig">
     <template #restaurant-registration>
-      <p>Restaurant registration</p>
+      <RestaurantDataForm />
     </template>
   </UiTabs>
 </template>

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { UiBaseFormLayout, UiInput, UiButton } from '@/ui';
 import { ref } from 'vue';
-import { useAuthStore, useAuthFormState } from '@/composables';
+import { useAuthStore, useAuthFormState } from '@/core';
 import { useVuelidate } from '@vuelidate/core';
 import { useLoginValidators } from '@/validators';
 

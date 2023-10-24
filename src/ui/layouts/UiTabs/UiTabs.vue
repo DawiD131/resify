@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { UiButton } from '@/ui';
-import { useCssBreakpoints } from '@/composables/useCssBreakpoints';
+import { useCssBreakpoints } from '@/core/useCssBreakpoints';
 import UiRwdTabNavItem from './_internals/UiRwdTabNavItem.vue';
 
 interface TabsConfig {

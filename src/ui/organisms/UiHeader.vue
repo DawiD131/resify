@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import UiSearchInput from '../molecules/UiSearchInput/UiSearchInput.vue';
 import UiLogo from '../atoms/UiLogo.vue';
-import { useCssBreakpoints } from '../../composables/useCssBreakpoints';
+import { useCssBreakpoints } from '@/core/useCssBreakpoints';
 import UiHamburger from '../atoms/UiHamburger.vue';
 
 interface Props {

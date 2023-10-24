@@ -1,7 +1,13 @@
 <script lang="ts" setup>
 import { UiRestaurantsPage, UiFilterBar, UiHorizontalRestaurantCard } from '@/ui';
 import Header from '@/components/organisms/Header.vue';
-import _ from 'lodash';
+import { onBeforeMount } from 'vue';
+import { useRestaurantStore } from '@/core/restaurant';
+
+const restaurantStore = useRestaurantStore();
+onBeforeMount(async () => {
+  await restaurantStore.fetchRestaurants();
+});
 </script>
 
 <template>
@@ -53,10 +59,10 @@ import _ from 'lodash';
     </template>
     <template #main-content>
       <UiHorizontalRestaurantCard
-        v-for="i in _.range(8)"
-        :key="i"
+        v-for="restaurant in restaurantStore.restaurants"
+        :key="restaurant.id"
         :rate="3"
-        title="Restaurant name"
+        :title="restaurant.name"
         thumb-url="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/restaurant-animated-logo-template-design-6da604bf6329fd9931237066088d59d8_screen.jpg?ts=1601244370"
         :tags="['italian', 'pizza', 'pasta', 'drinks']"
         @click="$router.push('restaurant-details')"

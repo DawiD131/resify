@@ -18,6 +18,7 @@ import UiFooter from '../organisms/UiFooter.vue';
 
 .UiRestaurantsPage {
   .content {
+    min-height: calc(70vh - 12rem);
     margin-top: 12rem;
     width: 100%;
     display: flex;

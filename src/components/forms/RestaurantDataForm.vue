@@ -3,6 +3,7 @@ import { UiBaseFormLayout, UiButton, UiInput } from '@/ui';
 import { ref } from 'vue';
 import { useRestaurantDataValidators } from '@/validators';
 import { useVuelidate } from '@vuelidate/core';
+import { useRestaurantStore } from '@/core/restaurant';
 
 const state = ref({
   restaurantName: '',
@@ -13,10 +14,16 @@ const state = ref({
   tag: ''
 });
 
+const restaurantStore = useRestaurantStore();
 const rules = useRestaurantDataValidators();
 const $v = useVuelidate(rules, state, { $lazy: true });
 
-const submit = () => {};
+const submit = async () => {
+  await restaurantStore.addRestaurant({
+    name: state.value.restaurantName,
+    description: state.value.description
+  });
+};
 </script>
 
 <template>

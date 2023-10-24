@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { UiHeader, UiButton } from '@/ui';
 import MobileMenu from './MobileMenu.vue';
-import { useMobileNavState } from '@/composables/useMobileNavState';
-import { useAuthStore } from '@/composables';
+import { useMobileNavState } from '@/core/useMobileNavState';
+import { useAuthStore } from '@/core';
 import { useModalStore } from '@/features/modals/stores/useModalStore';
 
 const modalStore = useModalStore();

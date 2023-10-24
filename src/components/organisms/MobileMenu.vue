@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { UiSearchInput, UiMobileMenu } from '@/ui';
-import { useMobileNavState } from '@/composables/useMobileNavState';
+import { useMobileNavState } from '@/core/useMobileNavState';
 
 const { state } = useMobileNavState();
 </script>

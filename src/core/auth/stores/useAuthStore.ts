@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
-import { useApiRepository } from '@/composables/useApiRepository';
+import { useApiRepository } from '@/core/useApiRepository';
 import { ref } from 'vue';
 import router from '@/router';
 import { useModalStore } from '@/features/modals/stores/useModalStore';
-import { useMobileNavState } from '@/composables/useMobileNavState';
+import { useMobileNavState } from '@/core/useMobileNavState';
 
 export const useAuthStore = defineStore('useAuthStore', () => {
   const { authRepository, userRepository } = useApiRepository();

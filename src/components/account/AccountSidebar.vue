@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { UiAccountSidebar } from '@/ui';
-import { useUserStore } from '@/composables';
+import { useUserStore } from '@/core';
 import { computed } from 'vue';
 
 const userStore = useUserStore();

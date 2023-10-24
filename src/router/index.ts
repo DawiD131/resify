@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Index from '../pages/Index.vue';
-import { useAuthStore, useUserStore } from '@/composables';
+import { useAuthStore, useUserStore } from '@/core';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

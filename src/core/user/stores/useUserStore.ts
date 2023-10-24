@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia';
-import { useApiRepository } from '@/composables/useApiRepository';
+import { useApiRepository } from '@/core/useApiRepository';
 import { type Ref, ref } from 'vue';
 import { UserDto } from '@/repository/dto/UserDto';
-import { useAuthFormState } from '@/composables/auth';
+import { useAuthFormState } from '@/core/auth';
 
 interface UseUserStore {
   currentUser: Ref<{

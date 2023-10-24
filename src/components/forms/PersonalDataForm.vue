@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { UiBaseFormLayout, UiInput, UiButton } from '@/ui';
 import { ref } from 'vue';
-import { useUserStore } from '@/composables';
+import { useUserStore } from '@/core';
 
 const userStore = useUserStore();
 

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import LoginForm from './internals/LoginForm.vue';
 import RegistrationForm from './internals/RegistrationForm.vue';
-import { useAuthFormState } from '@/composables';
+import { useAuthFormState } from '@/core';
 
 const { isLoginFormOpen } = useAuthFormState();
 </script>

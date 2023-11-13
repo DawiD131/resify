@@ -5,7 +5,7 @@ import { ref } from 'vue';
 export const useRestaurantStore = defineStore('useRestaurantStore', () => {
   const { restaurantRepository } = useApiRepository();
 
-  const restaurants = ref([]);
+  const restaurants = ref<any>([]);
   const fetchRestaurants = async () => {
     const response = await restaurantRepository.getRestaurants();
     restaurants.value = response.data;

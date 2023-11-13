@@ -7,6 +7,10 @@ export class RestaurantRepository {
     return await this.httpClient.get('restaurant');
   }
 
+  public async getRestaurant(id: string) {
+    return await this.httpClient.get(`restaurant/${id}`);
+  }
+
   public async addRestaurant(params: { name: string; description: string }) {
     return await this.httpClient.post('restaurant', params);
   }

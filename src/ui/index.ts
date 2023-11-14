@@ -10,6 +10,7 @@ import UiInput from './atoms/UiInput.vue';
 import UiLogo from './atoms/UiLogo.vue';
 import UiTag from './atoms/UiTag.vue';
 import UiThumbnail from './atoms/UiThumbnail.vue';
+import UiSimpleButton from '@/ui/atoms/UiSimpleButton.vue';
 
 // molecules
 import UiSearchInput from './molecules/UiSearchInput/UiSearchInput.vue';
@@ -32,6 +33,7 @@ import UiAccountSidebar from './organisms/UiAccountSidebar.vue';
 // layouts
 import UiBaseFormLayout from './layouts/UiBaseFormLayout.vue';
 import UiTabs from './layouts/UiTabs/UiTabs.vue';
+import UiFlexWithGapLayout from '@/ui/layouts/UiFlexWithGapLayout.vue';
 
 // pages
 import UiLandingPage from './pages/UiLandingPage.vue';
@@ -52,6 +54,7 @@ export {
   UiLogo,
   UiTag,
   UiThumbnail,
+  UiSimpleButton,
   //    molecules
   UiSearchInput,
   UiOverlay,
@@ -71,6 +74,7 @@ export {
   //  layouts
   UiBaseFormLayout,
   UiTabs,
+  UiFlexWithGapLayout,
   //  pages
   UiLandingPage,
   UiRestaurantsPage,

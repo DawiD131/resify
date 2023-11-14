@@ -12,6 +12,8 @@ $grey: #ededed;
 $text-dark: #292929;
 $text-light-dark: #5E5E5E;
 
+$icon-dark: #909090;
+
 $text-colors: (
         "dark": $text-dark,
         "dark-light": $text-light-dark,
@@ -24,5 +26,6 @@ $icon-colors: (
         "danger": $danger,
         "yellow": $yellow,
         "black": $black,
-        "white": $white
+        "white": $white,
+        "dark": $icon-dark
 )

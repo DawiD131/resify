@@ -1,5 +1,18 @@
 <script lang="ts" setup>
-import { UiTabs } from '@/ui';
+import { UiTabs, UiFlexWithGapLayout, UiHorizontalRestaurantCard, UiHeading } from '@/ui';
+import { useFavouriteRestaurant, useRestaurantStore } from '@/core';
+import { computed, onMounted } from 'vue';
+
+const restaurantStore = useRestaurantStore();
+const { removeRestaurantFromFavourite } = useFavouriteRestaurant();
+
+onMounted(() => {
+  restaurantStore.fetchRestaurants();
+});
+
+const favouriteRestaurants = computed(() =>
+  restaurantStore.restaurants.filter((it: any) => it.isFavourite)
+);
 const tabsConfig = [
   {
     displayName: 'Favourite restaurants',
@@ -11,7 +24,22 @@ const tabsConfig = [
 <template>
   <UiTabs :tabsConfig="tabsConfig">
     <template #favourite-restaurants>
-      <p>Favourite restaurants</p>
+      <UiFlexWithGapLayout v-if="favouriteRestaurants.length">
+        <UiHorizontalRestaurantCard
+          v-for="restaurant in favouriteRestaurants"
+          :key="restaurant.id"
+          :rate="3"
+          :title="restaurant.name"
+          :is-favourite="restaurant.isFavourite"
+          thumb-url="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/restaurant-animated-logo-template-design-6da604bf6329fd9931237066088d59d8_screen.jpg?ts=1601244370"
+          :tags="['italian', 'pizza', 'pasta', 'drinks']"
+          @like="removeRestaurantFromFavourite(restaurant.id)"
+          @see-details="$router.push(`/restaurant-details/${restaurant.id}`)"
+        />
+      </UiFlexWithGapLayout>
+      <UiHeading v-else size="h3" color="dark"
+        >You don't have any favourite restaurant yet</UiHeading
+      >
     </template>
   </UiTabs>
 </template>

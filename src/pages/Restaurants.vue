@@ -2,9 +2,11 @@
 import { UiRestaurantsPage, UiFilterBar, UiHorizontalRestaurantCard } from '@/ui';
 import Header from '@/components/organisms/Header.vue';
 import { onBeforeMount } from 'vue';
-import { useRestaurantStore } from '@/core/restaurant';
+import { useRestaurantStore, useFavouriteRestaurant } from '@/core/restaurant';
 
+const { addRestaurantToFavourite, removeRestaurantFromFavourite } = useFavouriteRestaurant();
 const restaurantStore = useRestaurantStore();
+
 onBeforeMount(async () => {
   await restaurantStore.fetchRestaurants();
 });
@@ -63,9 +65,15 @@ onBeforeMount(async () => {
         :key="restaurant.id"
         :rate="3"
         :title="restaurant.name"
+        :is-favourite="restaurant.isFavourite"
         thumb-url="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/restaurant-animated-logo-template-design-6da604bf6329fd9931237066088d59d8_screen.jpg?ts=1601244370"
         :tags="['italian', 'pizza', 'pasta', 'drinks']"
-        @click="$router.push(`restaurant-details/${restaurant.id}`)"
+        @like="
+          restaurant.isFavourite
+            ? removeRestaurantFromFavourite(restaurant.id)
+            : addRestaurantToFavourite(restaurant.id)
+        "
+        @see-details="$router.push(`restaurant-details/${restaurant.id}`)"
       />
     </template>
   </UiRestaurantsPage>

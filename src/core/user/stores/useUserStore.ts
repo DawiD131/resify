@@ -10,6 +10,7 @@ interface UseUserStore {
     firstName: string;
     lastName: string;
     isBusiness: boolean;
+    favouriteRestaurants: any;
   } | null>;
   getUser: () => Promise<void>;
   register: (user: UserDto) => Promise<void>;

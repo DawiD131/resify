@@ -3,7 +3,8 @@ export const iconColors = {
   danger: 'color-danger',
   yellow: 'color-yellow',
   black: 'color-black',
-  white: 'color-white'
+  white: 'color-white',
+  dark: 'color-dark'
 };
 
 export type IconColors = keyof typeof iconColors;

@@ -3,18 +3,21 @@ import UiRatingWithTitle from '../molecules/UiRatingWithTitle.vue';
 import UiTag from '../atoms/UiTag.vue';
 import UiButton from '../atoms/UiButton.vue';
 import UiIcon from '../atoms/UiIcon/UiIcon.vue';
+import UiSimpleButton from '../atoms/UiSimpleButton.vue';
 
 interface Props {
   rate: 1 | 2 | 3 | 4 | 5;
   title: string;
   thumbUrl: string;
   tags: string[];
+  isFavourite: boolean;
 }
 
 const props = defineProps<Props>();
 
 const emit = defineEmits<{
   (e: 'seeDetails'): void;
+  (e: 'like'): void;
 }>();
 </script>
 
@@ -25,7 +28,9 @@ const emit = defineEmits<{
       <UiTag v-for="(tag, index) in props.tags" :key="index" :label="tag" />
     </div>
     <div class="action-box">
-      <UiIcon color="danger" variant="heart" size="xl" />
+      <UiSimpleButton @click="emit('like')">
+        <UiIcon :color="isFavourite ? 'danger' : 'dark'" variant="heart" size="xl" />
+      </UiSimpleButton>
       <UiButton variant="primary" @click="emit('seeDetails')">See more</UiButton>
     </div>
   </div>

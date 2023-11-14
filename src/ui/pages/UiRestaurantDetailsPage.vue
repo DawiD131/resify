@@ -39,7 +39,7 @@ import { UiFooter } from '@/ui';
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 6rem;
+    margin: 6rem 0 4rem 0;
   }
 }
 </style>

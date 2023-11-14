@@ -15,6 +15,12 @@ const logout = async () => await authStore.logout();
 <template>
   <UiHeader @hamburgerClick="setState(!state)" :hamburger-state="state">
     <template #actions>
+      <UiButton
+        variant="secondary"
+        @click="$router.push('/restaurants')"
+        v-if="authStore.isLoggedIn"
+        >Restaurants</UiButton
+      >
       <UiButton variant="secondary" @click="$router.push('/my-account')" v-if="authStore.isLoggedIn"
         >My account</UiButton
       >
@@ -30,6 +36,19 @@ const logout = async () => await authStore.logout();
     <template #mobile-nav>
       <MobileMenu>
         <template #actions>
+          <UiButton
+            variant="secondary"
+            expanded
+            size="big"
+            @click="
+              () => {
+                $router.push('/restaurants');
+                setState(false);
+              }
+            "
+            v-if="authStore.isLoggedIn"
+            >Restaurants</UiButton
+          >
           <UiButton
             variant="secondary"
             expanded

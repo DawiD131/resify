@@ -26,11 +26,14 @@ onMounted(() => {
 });
 
 const submit = async () => {
-  await addReview({
-    rate: Number(state.value.rate),
-    description: state.value.description
-  });
-  modalStore.setModalState('reviewModal', false);
+  $v.value.$touch();
+  if (!$v.value.$invalid) {
+    await addReview({
+      rate: Number(state.value.rate),
+      description: state.value.description
+    });
+    modalStore.setModalState('reviewModal', false);
+  }
 };
 </script>
 
@@ -38,7 +41,8 @@ const submit = async () => {
   <UiBaseFormLayout submitText="Add" title="Add review" with-shadow>
     <template #inputs>
       <UiInput
-        label="Restaurant name"
+        label="Rate"
+        type="number"
         name="restaurantName"
         errorMessage="Invalid field"
         :isValid="!$v.rate.$invalid"

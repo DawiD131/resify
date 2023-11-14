@@ -1,4 +1,4 @@
-import { minLength, required } from '@vuelidate/validators';
+import { minLength, required, between } from '@vuelidate/validators';
 
 export const useReviewValidator = () => {
   return {
@@ -7,7 +7,8 @@ export const useReviewValidator = () => {
       minLength: minLength(10)
     },
     rate: {
-      required
+      required,
+      between: between(0, 5)
     }
   };
 };

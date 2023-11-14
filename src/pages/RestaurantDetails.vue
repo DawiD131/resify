@@ -55,9 +55,19 @@ const { restaurantDetails } = useRestaurantDetails(route.params.id as string);
           </template>
         </UiSlider>
       </div>
+      <UiHeading v-else size="h4" color="dark" class="no-review-info"
+        >This restaurant doesn't have any review yet</UiHeading
+      >
     </template>
     <template #bottom-section-heading>
-      <UiHeading size="h2" color="dark">Make reservation</UiHeading>
+      <UiHeading size="h2" color="primary">Make reservation</UiHeading>
     </template>
   </UiRestaurantDetailsPage>
 </template>
+
+<style lang="scss" scoped>
+.no-review-info {
+  margin: 4rem 0;
+  text-align: center;
+}
+</style>

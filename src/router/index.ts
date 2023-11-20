@@ -30,6 +30,12 @@ const router = createRouter({
       component: () => import('../pages/RestaurantDetails.vue')
     },
     {
+      path: '/restaurant-manager/:id',
+      name: 'restaurant-manager',
+      component: () => import('../pages/RestaurantManager.vue'),
+      beforeEnter: [lockPathWhenPersonal]
+    },
+    {
       path: '/my-account',
       name: 'my-account',
       redirect: { name: 'personal-data' },
@@ -50,6 +56,12 @@ const router = createRouter({
           name: 'favourite-restaurants',
           path: 'favourite-restaurants',
           component: () => import('../components/account/FavouriteRestaurants.vue')
+        },
+        {
+          name: 'restaurant-registration',
+          path: 'restaurant-registration',
+          component: () => import('../components/account/RestaurantRegistration.vue'),
+          beforeEnter: [lockPathWhenPersonal]
         },
         {
           name: 'restaurant-registration',

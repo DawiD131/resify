@@ -17,9 +17,12 @@ const sizeClass = computed(() => linkSizes[props.size]);
 </script>
 
 <template>
-  <router-link :to="props.to" :class="[{ isActive: props.isActive }, sizeClass, 'UiLink']">{{
-    props.label
-  }}</router-link>
+  <router-link
+    replace
+    :to="props.to"
+    :class="[{ isActive: props.isActive }, sizeClass, 'UiLink']"
+    >{{ props.label }}</router-link
+  >
 </template>
 
 <style lang="scss" scoped>

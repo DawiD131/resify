@@ -18,4 +18,8 @@ export class RestaurantRepository {
   public async addRestaurant(params: { name: string; description: string }) {
     return await this.httpClient.post('restaurant', params);
   }
+
+  public async searchRestaurants(queryKey: string) {
+    return await this.httpClient.get(`restaurant/search?query=${queryKey}`);
+  }
 }

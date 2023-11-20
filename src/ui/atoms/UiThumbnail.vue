@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 interface Props {
-  size: 'small' | 'medium';
+  size: 'little' | 'small' | 'medium';
   src: string;
   alt: string;
 }
@@ -15,6 +15,11 @@ const props = defineProps<Props>();
 <style lang="scss" scoped>
 .UiThumbnail {
   border-radius: 50%;
+
+  &.little {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
 
   &.small {
     width: 6.5rem;

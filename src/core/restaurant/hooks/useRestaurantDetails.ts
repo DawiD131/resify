@@ -12,6 +12,10 @@ export const useRestaurantDetails = (restaurantId: string) => {
   });
 
   return {
-    restaurantDetails
+    restaurantDetails,
+    fetchRestaurantDetails: async () => {
+      const resp = await restaurantRepository.getRestaurant(restaurantId);
+      restaurantDetails.value = resp.data;
+    }
   };
 };

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { UiSearchInput, UiMobileMenu } from '@/ui';
+import { UiMobileMenu } from '@/ui';
 import { useMobileNavState } from '@/core/useMobileNavState';
+import RestaurantSearchInput from '@/components/organisms/RestaurantSearchInput.vue';
 
 const { state } = useMobileNavState();
 </script>
@@ -8,7 +9,7 @@ const { state } = useMobileNavState();
 <template>
   <UiMobileMenu :is-open="state">
     <template #content-top>
-      <UiSearchInput placeholder="search by restaurant name" :is-loading="false" />
+      <RestaurantSearchInput />
       <slot name="actions" />
     </template>
   </UiMobileMenu>

@@ -4,6 +4,7 @@ import MobileMenu from './MobileMenu.vue';
 import { useMobileNavState } from '@/core/useMobileNavState';
 import { useAuthStore } from '@/core';
 import { useModalStore } from '@/features/modals/stores/useModalStore';
+import RestaurantSearchInput from '@/components/organisms/RestaurantSearchInput.vue';
 
 const modalStore = useModalStore();
 const authStore = useAuthStore();
@@ -14,6 +15,9 @@ const logout = async () => await authStore.logout();
 
 <template>
   <UiHeader @hamburgerClick="setState(!state)" :hamburger-state="state">
+    <template #search>
+      <RestaurantSearchInput />
+    </template>
     <template #actions>
       <UiButton
         variant="secondary"

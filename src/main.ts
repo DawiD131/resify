@@ -4,6 +4,8 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router';
 
+import 'swiper/css';
+
 const app = createApp(App);
 
 function preventMotion(event: any) {
@@ -26,6 +28,20 @@ app.directive('lock-body-scroll', {
     window.document.documentElement.style.overflow = 'visible';
     window.removeEventListener('scroll', preventMotion, false);
     window.removeEventListener('touchmove', preventMotion, false);
+  }
+});
+
+app.directive('click-outside', {
+  beforeMount(el, binding) {
+    el.clickOutsideEvent = function (event: any) {
+      if (!el.contains(event.target)) {
+        binding.value(event);
+      }
+    };
+    document.addEventListener('click', el.clickOutsideEvent);
+  },
+  unmounted(el) {
+    document.removeEventListener('click', el.clickOutsideEvent);
   }
 });
 

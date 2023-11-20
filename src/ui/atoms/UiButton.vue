@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 interface Props {
-  size?: 'medium' | 'big';
+  size?: 'small' | 'medium' | 'big';
   variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'text';
   expanded?: boolean;
 }
@@ -52,6 +52,11 @@ const emit = defineEmits(['click']);
   &.big {
     padding: 1.2rem 4.8rem;
     font-size: 2rem;
+  }
+
+  &.small {
+    padding: 0.8rem 2.8rem;
+    font-size: 1.2rem;
   }
 
   &.primary {

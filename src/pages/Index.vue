@@ -53,7 +53,7 @@ const openLoginModal = () => {
   </UiLandingPage>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .swiper {
   padding: 3rem 0;
 }

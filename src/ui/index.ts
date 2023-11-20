@@ -14,7 +14,6 @@ import UiSimpleButton from '@/ui/atoms/UiSimpleButton.vue';
 import UiCheckbox from '@/ui/atoms/UiCheckbox.vue';
 
 // molecules
-import UiSearchInput from './molecules/UiSearchInput/UiSearchInput.vue';
 import UiOverlay from './molecules/UiOverlay.vue';
 import UiRating from './molecules/UiRating.vue';
 import UiRatingWithTitle from './molecules/UiRatingWithTitle.vue';
@@ -30,6 +29,7 @@ import UiFilterBar from './organisms/UiFilterBar.vue';
 import UiRestaurantInformation from './organisms/UiRestaurantInformation.vue';
 import UiReviewTile from './organisms/UiReviewTile.vue';
 import UiAccountSidebar from './organisms/UiAccountSidebar.vue';
+import UiSearchInput from './organisms/UiSearchInput/UiSearchInput.vue';
 
 // layouts
 import UiBaseFormLayout from './layouts/UiBaseFormLayout.vue';
@@ -58,7 +58,6 @@ export {
   UiSimpleButton,
   UiCheckbox,
   //    molecules
-  UiSearchInput,
   UiOverlay,
   UiRating,
   UiRatingWithTitle,
@@ -73,6 +72,7 @@ export {
   UiRestaurantInformation,
   UiReviewTile,
   UiAccountSidebar,
+  UiSearchInput,
   //  layouts
   UiBaseFormLayout,
   UiTabs,

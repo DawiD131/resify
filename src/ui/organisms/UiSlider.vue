@@ -2,8 +2,6 @@
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import _ from 'lodash';
 
-import 'swiper/css';
-
 interface Props {
   slidesCount: number;
   spaceBetween: number;
@@ -12,7 +10,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   breakpoints: {
-    0: { slidesPerView: 1.7 },
+    0: { slidesPerView: 1.2 },
     530: { slidesPerView: 2 },
     767: { slidesPerView: 3 },
     1023: { slidesPerView: 4 }

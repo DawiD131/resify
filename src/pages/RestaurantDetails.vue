@@ -60,7 +60,7 @@ const { restaurantDetails } = useRestaurantDetails(route.params.id as string);
       >
     </template>
     <template #bottom-section-heading>
-      <UiHeading size="h2" color="primary">Make reservation</UiHeading>
+      <UiHeading size="h2" color="dark-light">Make reservation</UiHeading>
     </template>
   </UiRestaurantDetailsPage>
 </template>

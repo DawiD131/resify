@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import UiSearchInput from '../molecules/UiSearchInput/UiSearchInput.vue';
 import UiLogo from '../atoms/UiLogo.vue';
 import { useCssBreakpoints } from '@/core/useCssBreakpoints';
 import UiHamburger from '../atoms/UiHamburger.vue';
@@ -22,12 +21,10 @@ const isDesktop = breakpoints.greater('tablet');
   <header class="UiHeader">
     <div class="content">
       <UiLogo />
-      <UiSearchInput
-        placeholder="search by restaurant name"
-        :is-loading="false"
-        class="search"
-        v-if="isDesktop"
-      />
+      <div class="search">
+        <slot name="search" />
+      </div>
+
       <div class="actions" v-if="isDesktop">
         <slot name="actions" />
       </div>
@@ -68,6 +65,9 @@ const isDesktop = breakpoints.greater('tablet');
   .search {
     flex-basis: 35%;
     margin-left: 3rem;
+    @include below-tablet() {
+      display: none;
+    }
   }
 
   .actions {

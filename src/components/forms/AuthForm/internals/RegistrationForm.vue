@@ -4,6 +4,7 @@ import { useAuthFormState, useUserStore } from '@/core';
 import { ref } from 'vue';
 import { useRegisterValidators } from '@/validators';
 import useVuelidate from '@vuelidate/core';
+import UiCheckbox from '@/ui/atoms/UiCheckbox.vue';
 
 const { openLoginForm } = useAuthFormState();
 const state = ref({
@@ -62,6 +63,13 @@ const submit = async () => {
         v-model="state.pwd"
         @blur="$v.pwd.$touch()"
         type="password"
+      />
+      <UiCheckbox
+        :is-valid="!$v.isBusiness.$invalid"
+        name="account-type"
+        error-message="Invalid field"
+        v-model="state.isBusiness"
+        label="register business account"
       />
     </template>
     <template #actions>

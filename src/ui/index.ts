@@ -11,6 +11,7 @@ import UiLogo from './atoms/UiLogo.vue';
 import UiTag from './atoms/UiTag.vue';
 import UiThumbnail from './atoms/UiThumbnail.vue';
 import UiSimpleButton from '@/ui/atoms/UiSimpleButton.vue';
+import UiCheckbox from '@/ui/atoms/UiCheckbox.vue';
 
 // molecules
 import UiSearchInput from './molecules/UiSearchInput/UiSearchInput.vue';
@@ -55,6 +56,7 @@ export {
   UiTag,
   UiThumbnail,
   UiSimpleButton,
+  UiCheckbox,
   //    molecules
   UiSearchInput,
   UiOverlay,

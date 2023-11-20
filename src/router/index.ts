@@ -2,6 +2,15 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Index from '../pages/Index.vue';
 import { useAuthStore, useUserStore } from '@/core';
 
+const lockPathWhenBusiness = () => {
+  const userStore = useUserStore();
+  return !userStore.isBusinessAccount;
+};
+const lockPathWhenPersonal = () => {
+  const userStore = useUserStore();
+  return userStore.isBusinessAccount;
+};
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -34,6 +43,7 @@ const router = createRouter({
         {
           name: 'reservations',
           path: 'reservations',
+          beforeEnter: [lockPathWhenBusiness],
           component: () => import('../components/account/Reservations.vue')
         },
         {
@@ -44,7 +54,14 @@ const router = createRouter({
         {
           name: 'restaurant-registration',
           path: 'restaurant-registration',
-          component: () => import('../components/account/RestaurantRegistration.vue')
+          component: () => import('../components/account/RestaurantRegistration.vue'),
+          beforeEnter: [lockPathWhenPersonal]
+        },
+        {
+          name: 'my-restaurants',
+          path: 'my-restaurants',
+          beforeEnter: [lockPathWhenPersonal],
+          component: () => import('../components/account/MyRestaurants.vue')
         }
       ]
     }

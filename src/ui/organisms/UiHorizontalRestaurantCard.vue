@@ -11,12 +11,16 @@ interface Props {
   thumbUrl: string;
   tags: string[];
   isFavourite: boolean;
+  variant?: 'primary' | 'secondary';
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  variant: 'primary'
+});
 
 const emit = defineEmits<{
   (e: 'seeDetails'): void;
+  (e: 'manage'): void;
   (e: 'like'): void;
 }>();
 </script>
@@ -28,10 +32,15 @@ const emit = defineEmits<{
       <UiTag v-for="(tag, index) in props.tags" :key="index" :label="tag" />
     </div>
     <div class="action-box">
-      <UiSimpleButton @click="emit('like')">
+      <UiSimpleButton @click="emit('like')" v-if="variant === 'primary'">
         <UiIcon :color="isFavourite ? 'danger' : 'dark'" variant="heart" size="xl" />
       </UiSimpleButton>
-      <UiButton variant="primary" @click="emit('seeDetails')">See more</UiButton>
+      <UiButton v-if="variant === 'primary'" variant="primary" @click="emit('seeDetails')"
+        >See more</UiButton
+      >
+      <UiButton v-if="variant === 'secondary'" variant="primary" @click="emit('manage')"
+        >Manage</UiButton
+      >
     </div>
   </div>
 </template>

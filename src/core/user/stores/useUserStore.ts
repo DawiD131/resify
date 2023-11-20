@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { useApiRepository } from '@/core/useApiRepository';
-import { type Ref, ref } from 'vue';
+import { computed, type ComputedRef, type Ref, ref } from 'vue';
 import { UserDto } from '@/repository/dto/UserDto';
 import { useAuthFormState } from '@/core/auth';
 
@@ -11,14 +11,23 @@ interface UseUserStore {
     lastName: string;
     isBusiness: boolean;
     favouriteRestaurants: any;
+    id: number;
   } | null>;
   getUser: () => Promise<void>;
   register: (user: UserDto) => Promise<void>;
+  isBusinessAccount: ComputedRef<boolean>;
 }
 
 export const useUserStore = defineStore<'useUserStore', UseUserStore>('useUserStore', () => {
   const { userRepository } = useApiRepository();
-  const currentUser = ref(null);
+  const currentUser = ref<{
+    email: string;
+    firstName: string;
+    lastName: string;
+    isBusiness: boolean;
+    favouriteRestaurants: any;
+    id: number;
+  } | null>(null);
 
   const { openLoginForm } = useAuthFormState();
 
@@ -43,6 +52,7 @@ export const useUserStore = defineStore<'useUserStore', UseUserStore>('useUserSt
   return {
     register,
     getUser,
-    currentUser
+    currentUser,
+    isBusinessAccount: computed(() => (currentUser.value ? currentUser.value.isBusiness : false))
   };
 });

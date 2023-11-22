@@ -19,7 +19,7 @@ const { loadReviews, reviews } = useReviews(route.params.id as string);
 
 onMounted(() => loadReviews());
 
-const { restaurantDetails } = useRestaurantDetails(route.params.id as string);
+const { restaurantDetails, tags } = useRestaurantDetails(route.params.id as string);
 </script>
 
 <template>
@@ -33,7 +33,7 @@ const { restaurantDetails } = useRestaurantDetails(route.params.id as string);
         :rate="3"
         thumbUrl="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/restaurant-animated-logo-template-design-6da604bf6329fd9931237066088d59d8_screen.jpg?ts=1601244370"
         restaurantImageUrl="https://media.gettyimages.com/id/1248298359/photo/luxury-restaurant-interior-at-night.jpg?s=612x612&w=gi&k=20&c=vF5kJ4HiY11A5DqXzoGwP-PdfKMSsF3EmiKPtQfhrkc="
-        :tags="['italian food', 'drinks', 'tasty food']"
+        :tags="tags"
         :description="restaurantDetails.description"
         buttonText="see menu"
       />

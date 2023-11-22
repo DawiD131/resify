@@ -17,6 +17,7 @@ import UiCheckbox from '@/ui/atoms/UiCheckbox.vue';
 import UiOverlay from './molecules/UiOverlay.vue';
 import UiRating from './molecules/UiRating.vue';
 import UiRatingWithTitle from './molecules/UiRatingWithTitle.vue';
+import UiInputWithButton from './molecules/UiInputWithButton.vue';
 
 // organisms
 import UiFooter from './organisms/UiFooter.vue';
@@ -41,6 +42,7 @@ import UiLandingPage from './pages/UiLandingPage.vue';
 import UiRestaurantsPage from './pages/UiRestaurantsPage.vue';
 import UiRestaurantDetailsPage from './pages/UiRestaurantDetailsPage.vue';
 import UiMyAccountPage from './pages/UiMyAccountPage.vue';
+import UiRestaurantManagerPage from './pages/UiRestaurantManagerPage.vue';
 
 export {
   //  atoms
@@ -61,6 +63,7 @@ export {
   UiOverlay,
   UiRating,
   UiRatingWithTitle,
+  UiInputWithButton,
   //    organisms,
   UiFooter,
   UiHeader,
@@ -81,5 +84,6 @@ export {
   UiLandingPage,
   UiRestaurantsPage,
   UiRestaurantDetailsPage,
-  UiMyAccountPage
+  UiMyAccountPage,
+  UiRestaurantManagerPage
 };

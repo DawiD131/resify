@@ -22,4 +22,8 @@ export class RestaurantRepository {
   public async searchRestaurants(queryKey: string) {
     return await this.httpClient.get(`restaurant/search?query=${queryKey}`);
   }
+
+  public async deleteRestaurant(id: number) {
+    return await this.httpClient.delete(`restaurant/${id}`);
+  }
 }

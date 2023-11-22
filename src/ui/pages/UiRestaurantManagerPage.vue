@@ -9,7 +9,7 @@ import { UiFooter } from '@/ui';
       <div>
         <slot name="top-section" />
       </div>
-      <div>
+      <div class="mid-section">
         <slot name="middle-section"></slot>
       </div>
       <div>
@@ -27,6 +27,17 @@ import { UiFooter } from '@/ui';
   .main-content {
     margin-top: 12rem;
     @include page-content-layout-base();
+  }
+
+  .middle-section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 6rem 0 4rem 0;
+  }
+
+  .mid-section {
+    margin: 10rem 0 15rem 0;
   }
 }
 </style>

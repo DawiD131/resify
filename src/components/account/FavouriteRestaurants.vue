@@ -32,7 +32,7 @@ const tabsConfig = [
           :title="restaurant.name"
           :is-favourite="restaurant.isFavourite"
           thumb-url="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/restaurant-animated-logo-template-design-6da604bf6329fd9931237066088d59d8_screen.jpg?ts=1601244370"
-          :tags="['italian', 'pizza', 'pasta', 'drinks']"
+          :tags="restaurant.tags"
           @like="removeRestaurantFromFavourite(restaurant.id)"
           @see-details="$router.push(`/restaurant-details/${restaurant.id}`)"
         />

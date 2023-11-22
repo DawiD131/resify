@@ -9,7 +9,7 @@ interface Props {
   rate: 1 | 2 | 3 | 4 | 5;
   title: string;
   thumbUrl: string;
-  tags: string[];
+  tags: { name: string; id: number }[];
   isFavourite: boolean;
   variant?: 'primary' | 'secondary';
 }
@@ -27,10 +27,13 @@ const emit = defineEmits<{
 
 <template>
   <div class="UiHorizontalRestaurantCard">
-    <UiRatingWithTitle :rate="props.rate" :thumb-url="props.thumbUrl" :title="props.title" />
-    <div class="tags-box">
-      <UiTag v-for="(tag, index) in props.tags" :key="index" :label="tag" />
+    <div class="left-section">
+      <UiRatingWithTitle :rate="props.rate" :thumb-url="props.thumbUrl" :title="props.title" />
+      <div class="tags-box">
+        <UiTag v-for="tag in props.tags" :label="tag.name" :key="tag.id" />
+      </div>
     </div>
+
     <div class="action-box">
       <UiSimpleButton @click="emit('like')" v-if="variant === 'primary'">
         <UiIcon :color="isFavourite ? 'danger' : 'dark'" variant="heart" size="xl" />
@@ -62,9 +65,14 @@ const emit = defineEmits<{
     gap: 1.5rem;
   }
 
+  .left-section {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+  }
+
   .tags-box {
     display: flex;
-    align-self: flex-end;
     flex-wrap: wrap;
     gap: 0.8rem;
 

@@ -32,9 +32,6 @@ import UiFooter from '../organisms/UiFooter.vue';
 
     .main-content {
       padding-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
       flex-grow: 1;
 
       @include below-tablet() {

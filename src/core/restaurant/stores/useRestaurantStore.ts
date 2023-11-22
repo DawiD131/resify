@@ -19,9 +19,18 @@ export const useRestaurantStore = defineStore('useRestaurantStore', () => {
     }
   };
 
+  const deleteRestaurant = async (id: number) => {
+    try {
+      await restaurantRepository.deleteRestaurant(id);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return {
     restaurants,
     fetchRestaurants,
-    addRestaurant
+    addRestaurant,
+    deleteRestaurant
   };
 });

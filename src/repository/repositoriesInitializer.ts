@@ -1,4 +1,4 @@
-import { AuthRepository, UserRepository } from '@/repository/repositories';
+import { AuthRepository, UserRepository, TagRepository } from '@/repository/repositories';
 import { httpClient } from '@/http-client';
 import { RestaurantRepository } from '@/repository/repositories/RestaurantRepository';
 import { ReviewRepository } from '@/repository/repositories/ReviewRepository';
@@ -10,6 +10,7 @@ export interface repositories {
   restaurantRepository: RestaurantRepository;
   reviewRepository: ReviewRepository;
   favouriteRestaurantRepository: FavouriteRestaurantRepository;
+  tagRepository: TagRepository;
 }
 
 export const repositoriesInitializer = (): repositories => ({
@@ -17,5 +18,6 @@ export const repositoriesInitializer = (): repositories => ({
   userRepository: new UserRepository(httpClient),
   restaurantRepository: new RestaurantRepository(httpClient),
   reviewRepository: new ReviewRepository(httpClient),
-  favouriteRestaurantRepository: new FavouriteRestaurantRepository(httpClient)
+  favouriteRestaurantRepository: new FavouriteRestaurantRepository(httpClient),
+  tagRepository: new TagRepository(httpClient)
 });

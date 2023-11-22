@@ -5,7 +5,7 @@ interface Props {
   restaurantName: string;
   thumbUrl: string;
   restaurantImageUrl: string;
-  tags: string[];
+  tags: { name: string; id: number }[];
   description: string;
   buttonText: string;
 }
@@ -28,7 +28,7 @@ const props = defineProps<Props>();
     </div>
     <div class="bottom-information">
       <div class="tags">
-        <UiTag v-for="(tag, index) in props.tags" :label="tag" :key="index" />
+        <UiTag v-for="tag in props.tags" :label="tag.name" :key="tag.id" />
       </div>
       <div>
         <UiText size="xs">

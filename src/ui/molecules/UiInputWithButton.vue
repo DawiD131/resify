@@ -31,7 +31,7 @@ const value = computed({
       :is-valid="isValid"
       :name="name"
       :error-message="errorMessage"
-      :model-value="value"
+      v-model="value"
       :label="label"
       class="input"
     />

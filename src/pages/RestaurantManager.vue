@@ -51,7 +51,7 @@ const handleRemoveRestaurantClick = async () => {
     <template #middle-section>
       <UiTabs :tabs-config="tabsConfig">
         <template #restaurant-informations>
-          <RestaurantDataForm />
+          <RestaurantDataForm :restaurant-id="route.params.id as string" />
         </template>
         <template #restaurant-tags>
           <TagsForm :tags="tags" :restaurant-id="route.params.id as string" />

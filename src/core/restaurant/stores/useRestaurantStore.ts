@@ -11,7 +11,13 @@ export const useRestaurantStore = defineStore('useRestaurantStore', () => {
     restaurants.value = response.data;
   };
 
-  const addRestaurant = async (params: { name: string; description: string }) => {
+  const addRestaurant = async (params: {
+    name: string;
+    description: string;
+    city: string;
+    address: string;
+    zipCode: string;
+  }) => {
     try {
       await restaurantRepository.addRestaurant(params);
     } catch (e) {

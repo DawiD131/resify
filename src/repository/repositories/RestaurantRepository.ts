@@ -15,7 +15,13 @@ export class RestaurantRepository {
     return await this.httpClient.get(`restaurant/${id}`);
   }
 
-  public async addRestaurant(params: { name: string; description: string }) {
+  public async addRestaurant(params: {
+    name: string;
+    description: string;
+    city: string;
+    zipCode: string;
+    address: string;
+  }) {
     return await this.httpClient.post('restaurant', params);
   }
 

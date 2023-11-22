@@ -1,17 +1,37 @@
 <script lang="ts" setup>
 import { UiBaseFormLayout, UiButton, UiInput } from '@/ui';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useRestaurantDataValidators } from '@/validators';
 import { useVuelidate } from '@vuelidate/core';
-import { useRestaurantStore } from '@/core/restaurant';
+import { useRestaurantDetails, useRestaurantStore } from '@/core';
+
+interface Props {
+  restaurantId?: string;
+}
+
+const props = defineProps<Props>();
 
 const state = ref({
   restaurantName: '',
   description: '',
   city: '',
   address: '',
-  zipCode: '',
-  tag: ''
+  zipCode: ''
+});
+
+onMounted(async () => {
+  if (props.restaurantId) {
+    const { fetchRestaurantDetails, restaurantDetails } = useRestaurantDetails(props.restaurantId);
+    await fetchRestaurantDetails();
+
+    state.value = {
+      restaurantName: restaurantDetails.value.name,
+      description: restaurantDetails.value.description,
+      city: restaurantDetails.value.address.city,
+      address: restaurantDetails.value.address.address,
+      zipCode: restaurantDetails.value.address.zipCode
+    };
+  }
 });
 
 const restaurantStore = useRestaurantStore();
@@ -21,13 +41,16 @@ const $v = useVuelidate(rules, state, { $lazy: true });
 const submit = async () => {
   await restaurantStore.addRestaurant({
     name: state.value.restaurantName,
-    description: state.value.description
+    description: state.value.description,
+    city: state.value.city,
+    address: state.value.address,
+    zipCode: state.value.zipCode
   });
 };
 </script>
 
 <template>
-  <UiBaseFormLayout submitText="Add" title="Add restaurant">
+  <UiBaseFormLayout :title="restaurantId ? 'Edit restaurant' : 'Add restaurant'">
     <template #inputs>
       <UiInput
         label="Restaurant name"
@@ -71,7 +94,9 @@ const submit = async () => {
       />
     </template>
     <template #actions>
-      <UiButton variant="success" size="big" expanded @click="submit">Add</UiButton>
+      <UiButton variant="success" size="big" expanded @click="submit">
+        {{ restaurantId ? 'Edit' : 'Add' }}
+      </UiButton>
     </template>
   </UiBaseFormLayout>
 </template>

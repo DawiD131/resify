@@ -20,9 +20,6 @@ export const useRestaurantDataValidators = () => {
     },
     zipCode: {
       required
-    },
-    tag: {
-      minLength: minLength(3)
     }
   };
 };

@@ -4,6 +4,14 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router';
 
+import { Quasar, Notify } from 'quasar';
+
+// Import icon libraries
+import '@quasar/extras/material-icons/material-icons.css';
+
+// Import Quasar css
+import 'quasar/src/css/index.sass';
+
 import 'swiper/css';
 
 const app = createApp(App);
@@ -47,5 +55,16 @@ app.directive('click-outside', {
 
 app.use(createPinia());
 app.use(router);
+// @ts-ignore
+app.use(Quasar, {
+  plugins: {
+    Notify
+  },
+  config: {
+    brand: {
+      primary: '#FF9C72'
+    }
+  }
+});
 
 app.mount('#app');

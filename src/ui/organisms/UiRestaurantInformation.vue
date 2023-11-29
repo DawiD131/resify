@@ -40,6 +40,8 @@ const props = defineProps<Props>();
 </template>
 
 <style lang="scss" scoped>
+@import '../../assets/scss/helpers';
+
 .UiRestaurantInformation {
   display: flex;
   flex-direction: column;
@@ -72,6 +74,10 @@ const props = defineProps<Props>();
     flex-direction: column;
     max-width: 50%;
     gap: 3rem;
+
+    @include below-tablet {
+      max-width: initial;
+    }
   }
 }
 </style>

@@ -16,7 +16,7 @@ import { UiFooter } from '@/ui';
         <slot name="middle-section"></slot>
       </div>
       <div>
-        <div>
+        <div class="bottom-section-heading">
           <slot name="bottom-section-heading" />
         </div>
         <slot name="bottom-section" />
@@ -39,6 +39,10 @@ import { UiFooter } from '@/ui';
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 6rem 0 4rem 0;
+  }
+
+  .bottom-section-heading {
     margin: 6rem 0 4rem 0;
   }
 }

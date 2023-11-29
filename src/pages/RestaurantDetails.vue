@@ -12,6 +12,7 @@ import { useRestaurantDetails, useReviews } from '@/core';
 import { useRoute } from 'vue-router';
 import { useModalStore } from '@/features/modals';
 import { onMounted } from 'vue';
+import TermPicker from '@/components/forms/TermPickerForm.vue';
 
 const modalStore = useModalStore();
 const route = useRoute();
@@ -61,6 +62,9 @@ const { restaurantDetails, tags } = useRestaurantDetails(route.params.id as stri
     </template>
     <template #bottom-section-heading>
       <UiHeading size="h2" color="dark-light">Make reservation</UiHeading>
+    </template>
+    <template #bottom-section>
+      <TermPicker :restaurant-id="Number(route.params.id)" />
     </template>
   </UiRestaurantDetailsPage>
 </template>

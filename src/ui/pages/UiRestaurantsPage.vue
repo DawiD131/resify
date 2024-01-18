@@ -6,7 +6,6 @@ import UiFooter from '../organisms/UiFooter.vue';
   <div class="UiRestaurantsPage">
     <slot name="header" />
     <main class="content">
-      <div class="side"><slot name="side" /></div>
       <div class="main-content"><slot name="main-content" /></div>
     </main>
     <UiFooter />

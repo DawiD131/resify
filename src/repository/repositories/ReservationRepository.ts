@@ -19,4 +19,16 @@ export class ReservationRepository {
   public async delete(id: number) {
     return await this.httpClient.delete(`reservation/${id}`);
   }
+
+  public async update(
+    id: number,
+    params: {
+      restaurantId: number;
+      from: Date;
+      to: Date;
+      state: 'accepted' | 'pending' | 'cancelled';
+    }
+  ) {
+    return await this.httpClient.put(`reservation/${id}`, params);
+  }
 }

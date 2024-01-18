@@ -32,6 +32,7 @@ import UiReviewTile from './organisms/UiReviewTile.vue';
 import UiAccountSidebar from './organisms/UiAccountSidebar.vue';
 import UiSearchInput from './organisms/UiSearchInput/UiSearchInput.vue';
 import UiPersonalReservationCard from './organisms/UiPersonalReservationCard.vue';
+import UiRestaurateurReservationCard from '@/ui/organisms/UiResteurateurReservationCard.vue';
 
 // layouts
 import UiBaseFormLayout from './layouts/UiBaseFormLayout.vue';
@@ -78,6 +79,7 @@ export {
   UiAccountSidebar,
   UiSearchInput,
   UiPersonalReservationCard,
+  UiRestaurateurReservationCard,
   //  layouts
   UiBaseFormLayout,
   UiTabs,

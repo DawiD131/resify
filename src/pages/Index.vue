@@ -3,8 +3,16 @@ import { UiLandingPage, UiHeading, UiButton, UiVerticalRestaurantCard, UiSlider 
 import _ from 'lodash';
 import Header from '@/components/organisms/Header.vue';
 import { useModalStore } from '@/features/modals/stores/useModalStore';
+import { onMounted } from 'vue';
+import { useRestaurantStore } from '@/core';
 
 const modalStore = useModalStore();
+
+const restaurantStore = useRestaurantStore();
+
+onMounted(() => {
+  restaurantStore.fetchRestaurants();
+});
 
 const openLoginModal = () => {
   modalStore.setModalState('authModal', true);
@@ -22,14 +30,23 @@ const openLoginModal = () => {
       <UiHeading size="h2" color="light">Best rated</UiHeading>
     </template>
     <template #mid-section-content>
-      <UiSlider :slidesCount="10" :space-between="10" class="swiper">
-        <template v-for="i in _.range(10)" :key="i" #[`slide-${i}`]>
+      <UiSlider
+        :slidesCount="10"
+        :space-between="10"
+        class="swiper"
+        v-if="restaurantStore.restaurants.length"
+      >
+        <template
+          v-for="(item, index) in restaurantStore.restaurants"
+          :key="item.id"
+          #[`slide-${index}`]
+        >
           <UiVerticalRestaurantCard
             :rate="3"
-            title="Restaurant name"
+            :title="item.name"
             thumb-url="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/restaurant-animated-logo-template-design-6da604bf6329fd9931237066088d59d8_screen.jpg?ts=1601244370"
-            :tags="['italian', 'pizza', 'pasta', 'drinks']"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam convallis venenatis placerat..."
+            :tags="item.tags"
+            :description="item.description.slice(0, 150)"
           />
         </template>
       </UiSlider>
@@ -38,14 +55,23 @@ const openLoginModal = () => {
       <UiHeading size="h2" color="dark">Recently added</UiHeading>
     </template>
     <template #bottom-section-content>
-      <UiSlider :slidesCount="10" :space-between="10" class="swiper">
-        <template v-for="i in _.range(10)" :key="i" #[`slide-${i}`]>
+      <UiSlider
+        :slidesCount="10"
+        :space-between="10"
+        class="swiper"
+        v-if="restaurantStore.restaurants.length"
+      >
+        <template
+          v-for="(item, index) in restaurantStore.restaurants"
+          :key="item.id"
+          #[`slide-${index}`]
+        >
           <UiVerticalRestaurantCard
             :rate="3"
-            title="Restaurant name"
+            :title="item.name"
             thumb-url="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/restaurant-animated-logo-template-design-6da604bf6329fd9931237066088d59d8_screen.jpg?ts=1601244370"
-            :tags="['italian', 'pizza', 'pasta', 'drinks']"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam convallis venenatis placerat..."
+            :tags="item.tags"
+            :description="item.description.slice(0, 150)"
           />
         </template>
       </UiSlider>

@@ -3,6 +3,7 @@ import UiRatingWithTitle from '../molecules/UiRatingWithTitle.vue';
 import UiTag from '../atoms/UiTag.vue';
 import UiText from '../atoms/UiText/UiText.vue';
 import UiButton from '../atoms/UiButton.vue';
+import { useModalStore } from '@/features/modals';
 
 interface Props {
   rate: 1 | 2 | 3 | 4 | 5;
@@ -13,6 +14,12 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
+const modalStore = useModalStore();
+
+const handleClick = async () => {
+  modalStore.setModalState('authModal', true);
+};
 </script>
 
 <template>
@@ -24,7 +31,9 @@ const props = defineProps<Props>();
     <div class="description">
       <UiText size="xs" color="dark-light">{{ props.description }}</UiText>
     </div>
-    <UiButton class="button" variant="primary" size="medium" expanded>See more</UiButton>
+    <UiButton class="button" variant="primary" size="medium" expanded @click="handleClick"
+      >See more</UiButton
+    >
   </div>
 </template>
 

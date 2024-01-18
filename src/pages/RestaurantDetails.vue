@@ -8,11 +8,13 @@ import {
   UiReviewTile
 } from '@/ui';
 import Header from '@/components/organisms/Header.vue';
-import { useRestaurantDetails, useReviews } from '@/core';
+import { useRestaurantDetails, useReviews, useUserStore } from '@/core';
 import { useRoute } from 'vue-router';
 import { useModalStore } from '@/features/modals';
 import { onMounted } from 'vue';
 import TermPicker from '@/components/forms/TermPickerForm.vue';
+
+const userStore = useUserStore();
 
 const modalStore = useModalStore();
 const route = useRoute();
@@ -60,10 +62,10 @@ const { restaurantDetails, tags } = useRestaurantDetails(route.params.id as stri
         >This restaurant doesn't have any review yet</UiHeading
       >
     </template>
-    <template #bottom-section-heading>
+    <template #bottom-section-heading v-if="!userStore.isBusinessAccount">
       <UiHeading size="h2" color="dark-light">Make reservation</UiHeading>
     </template>
-    <template #bottom-section>
+    <template #bottom-section v-if="!userStore.isBusinessAccount">
       <TermPicker :restaurant-id="Number(route.params.id)" />
     </template>
   </UiRestaurantDetailsPage>

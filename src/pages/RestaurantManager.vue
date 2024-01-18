@@ -17,10 +17,6 @@ const tabsConfig = [
   {
     displayName: 'Restaurant tags',
     slotName: 'restaurant-tags'
-  },
-  {
-    displayName: 'Restaurant Menu',
-    slotName: 'restaurant-menu'
   }
 ];
 
@@ -56,7 +52,6 @@ const handleRemoveRestaurantClick = async () => {
         <template #restaurant-tags>
           <TagsForm :tags="tags" :restaurant-id="route.params.id as string" />
         </template>
-        <template #restaurant-menu></template>
       </UiTabs>
     </template>
     <template #bottom-section>

@@ -21,7 +21,6 @@ const props = defineProps<Props>();
         :rate="props.rate"
         :thumbUrl="props.thumbUrl"
       />
-      <UiButton>{{ props.buttonText }}</UiButton>
     </div>
     <div class="image-box">
       <img :src="props.restaurantImageUrl" alt="restaurant image" />

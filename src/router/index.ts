@@ -74,6 +74,12 @@ const router = createRouter({
           path: 'my-restaurants',
           beforeEnter: [lockPathWhenPersonal],
           component: () => import('../components/account/MyRestaurants.vue')
+        },
+        {
+          name: 'customer-reservations',
+          path: 'customer-reservations',
+          beforeEnter: [lockPathWhenPersonal],
+          component: () => import('../components/account/CustomerReservations.vue')
         }
       ]
     }

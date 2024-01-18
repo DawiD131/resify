@@ -7,6 +7,9 @@ export class RestaurantRepository {
     return await this.httpClient.get('restaurant');
   }
 
+  public async getAllRestaurants() {
+    return await this.httpClient.get('restaurant/fetch-all');
+  }
   public async getRestaurantsByOwnerId(ownerId: number) {
     return await this.httpClient.get(`restaurant?ownerId=${ownerId}`);
   }

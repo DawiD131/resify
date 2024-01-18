@@ -3,6 +3,8 @@ import UiThumbnail from '@/ui/atoms/UiThumbnail.vue';
 import UiText from '@/ui/atoms/UiText/UiText.vue';
 import UiButton from '@/ui/atoms/UiButton.vue';
 import { useRouter } from 'vue-router';
+import { useUserStore } from '@/core';
+import { useModalStore } from '@/features/modals';
 
 interface Props {
   displayName: string;
@@ -12,6 +14,8 @@ interface Props {
 
 const props = defineProps<Props>();
 
+const userStore = useUserStore();
+const modalStore = useModalStore();
 const router = useRouter();
 
 const emit = defineEmits<{
@@ -19,6 +23,10 @@ const emit = defineEmits<{
 }>();
 
 const handleClick = async () => {
+  if (!userStore.currentUser) {
+    modalStore.setModalState('authModal', true);
+    return;
+  }
   await router.push(`/restaurant-details/${props.id}`);
   emit('search-item-click');
 };

@@ -34,6 +34,11 @@ const navItems = [
     label: 'My restaurants',
     to: 'my-restaurants',
     isVisible: userStore.isBusinessAccount
+  },
+  {
+    label: 'Customer reservations',
+    to: 'customer-reservations',
+    isVisible: userStore.isBusinessAccount
   }
 ];
 </script>

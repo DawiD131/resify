@@ -18,48 +18,6 @@ onBeforeMount(async () => {
     <template #header>
       <Header />
     </template>
-    <template #side>
-      <UiFilterBar
-        :first-criteria="{
-          title: 'Location',
-          options: [
-            {
-              id: 'jn1kj2nkjn',
-              value: 'Warsaw'
-            },
-            {
-              id: 'asdnasidji',
-              value: 'Krakow'
-            }
-          ],
-          currentCriteria: [
-            {
-              id: 'asdnasidji',
-              value: 'Krakow'
-            }
-          ]
-        }"
-        :second-criteria="{
-          title: 'Tags',
-          options: [
-            {
-              id: 'jn1kj2nkjn',
-              value: 'Italian'
-            },
-            {
-              id: 'asdnasidji',
-              value: 'Polish food'
-            }
-          ],
-          currentCriteria: [
-            {
-              id: 'asdnasidji',
-              value: 'Polish food'
-            }
-          ]
-        }"
-      />
-    </template>
     <template #main-content>
       <div v-if="restaurantStore.restaurants.length" class="restaurant-items-wrapper">
         <UiHorizontalRestaurantCard

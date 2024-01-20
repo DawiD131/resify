@@ -39,8 +39,6 @@ const archivedReservations = computed(() =>
 const cancelledReservations = computed(() =>
   reservations.value.filter((reservation: any) => reservation.state === 'cancelled')
 );
-
-console.log(reservations);
 </script>
 
 <template>

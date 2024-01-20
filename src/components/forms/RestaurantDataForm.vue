@@ -4,12 +4,14 @@ import { onMounted, ref } from 'vue';
 import { useRestaurantDataValidators } from '@/validators';
 import { useVuelidate } from '@vuelidate/core';
 import { useRestaurantDetails, useRestaurantStore } from '@/core';
+import { useQuasar } from 'quasar';
 
 interface Props {
   restaurantId?: string;
 }
 
 const props = defineProps<Props>();
+const $q = useQuasar();
 
 const state = ref({
   restaurantName: '',
@@ -39,13 +41,60 @@ const rules = useRestaurantDataValidators();
 const $v = useVuelidate(rules, state, { $lazy: true });
 
 const submit = async () => {
-  await restaurantStore.addRestaurant({
-    name: state.value.restaurantName,
-    description: state.value.description,
-    city: state.value.city,
-    address: state.value.address,
-    zipCode: state.value.zipCode
-  });
+  $v.value.$touch();
+  await $v.value.$validate();
+  if (!$v.value.$invalid) {
+    try {
+      if (props.restaurantId) {
+        await restaurantStore.updateRestaurant(props.restaurantId, {
+          name: state.value.restaurantName,
+          description: state.value.description,
+          city: state.value.city,
+          address: state.value.address,
+          zipCode: state.value.zipCode
+        });
+        $q.notify({
+          message: 'Restaurant data were changed',
+          position: 'top',
+          color: 'positive',
+          timeout: 1000,
+          icon: 'thumb_up'
+        });
+      } else {
+        await restaurantStore.addRestaurant({
+          name: state.value.restaurantName,
+          description: state.value.description,
+          city: state.value.city,
+          address: state.value.address,
+          zipCode: state.value.zipCode
+        });
+        $q.notify({
+          message: 'Restaurant was added',
+          position: 'top',
+          color: 'positive',
+          timeout: 1000,
+          icon: 'thumb_up'
+        });
+        state.value = {
+          restaurantName: '',
+          description: '',
+          city: '',
+          address: '',
+          zipCode: ''
+        };
+      }
+    } catch {
+      $q.notify({
+        message: 'Ooops an error occurred',
+        position: 'top',
+        color: 'red',
+        timeout: 1000,
+        icon: 'thumb_down'
+      });
+    } finally {
+      $v.value.$reset();
+    }
+  }
 };
 </script>
 

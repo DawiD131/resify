@@ -3,21 +3,55 @@ import { UiInputWithButton, UiTag } from '@/ui';
 import { useRestaurantDetails } from '@/core';
 import { ref } from 'vue';
 import UiHeading from '@/ui/atoms/UiHeading/UiHeading.vue';
+import { useQuasar } from 'quasar';
+import { useVuelidate } from '@vuelidate/core';
+import { required, minLength } from '@vuelidate/validators';
 interface Props {
   tags: { id: number; name: string }[];
   restaurantId: string;
 }
 
 const props = defineProps<Props>();
+const state = ref({
+  tag: ''
+});
 
-const inputState = ref('');
-
+const $v = useVuelidate(
+  {
+    tag: { required, minLength: minLength(3) }
+  },
+  state,
+  { $lazy: true }
+);
+const $q = useQuasar();
 const { addTag, removeTag } = useRestaurantDetails(props.restaurantId);
 
 const submit = async () => {
-  console.log('');
-  await addTag(inputState.value);
-  inputState.value = '';
+  $v.value.$touch();
+  await $v.value.$validate();
+  if (!$v.value.$invalid) {
+    try {
+      await addTag(state.value.tag);
+      state.value.tag = '';
+      $q.notify({
+        message: 'Tag was added',
+        position: 'top',
+        color: 'positive',
+        timeout: 1000,
+        icon: 'thumb_up'
+      });
+    } catch {
+      $q.notify({
+        message: 'Ooops something went wrong',
+        position: 'top',
+        color: 'red',
+        timeout: 1000,
+        icon: 'thumb_down'
+      });
+    } finally {
+      $v.value.$reset();
+    }
+  }
 };
 </script>
 
@@ -38,12 +72,13 @@ const submit = async () => {
 
     <div class="input-wrapper">
       <UiInputWithButton
-        :is-valid="true"
+        :is-valid="!$v.tag.$invalid"
         name="tag-input"
         error-message="Tag is invalid"
-        v-model="inputState"
+        v-model="state.tag"
         label="tag name"
         @click="submit"
+        @blur="$v.tag.$touch()"
       />
     </div>
   </div>

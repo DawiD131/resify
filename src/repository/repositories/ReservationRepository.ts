@@ -27,6 +27,7 @@ export class ReservationRepository {
       from: Date;
       to: Date;
       state: 'accepted' | 'pending' | 'cancelled';
+      peopleCount: number;
     }
   ) {
     return await this.httpClient.put(`reservation/${id}`, params);

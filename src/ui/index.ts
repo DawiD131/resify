@@ -18,6 +18,7 @@ import UiOverlay from './molecules/UiOverlay.vue';
 import UiRating from './molecules/UiRating.vue';
 import UiRatingWithTitle from './molecules/UiRatingWithTitle.vue';
 import UiInputWithButton from './molecules/UiInputWithButton.vue';
+import UiCounterInput from '@/ui/molecules/UiCounterInput.vue';
 
 // organisms
 import UiFooter from './organisms/UiFooter.vue';
@@ -66,6 +67,7 @@ export {
   UiRating,
   UiRatingWithTitle,
   UiInputWithButton,
+  UiCounterInput,
   //    organisms,
   UiFooter,
   UiHeader,

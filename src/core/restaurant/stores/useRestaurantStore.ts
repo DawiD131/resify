@@ -18,25 +18,31 @@ export const useRestaurantStore = defineStore('useRestaurantStore', () => {
     address: string;
     zipCode: string;
   }) => {
-    try {
-      await restaurantRepository.addRestaurant(params);
-    } catch (e) {
-      console.error(e);
-    }
+    await restaurantRepository.addRestaurant(params);
   };
 
   const deleteRestaurant = async (id: number) => {
-    try {
-      await restaurantRepository.deleteRestaurant(id);
-    } catch (e) {
-      console.log(e);
+    await restaurantRepository.deleteRestaurant(id);
+  };
+
+  const updateRestaurant = async (
+    id: string,
+    params: {
+      name: string;
+      description: string;
+      city: string;
+      address: string;
+      zipCode: string;
     }
+  ) => {
+    await restaurantRepository.updateRestaurant(id, params);
   };
 
   return {
     restaurants,
     fetchRestaurants,
     addRestaurant,
-    deleteRestaurant
+    deleteRestaurant,
+    updateRestaurant
   };
 });

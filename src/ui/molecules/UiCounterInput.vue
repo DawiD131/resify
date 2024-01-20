@@ -1,53 +1,55 @@
 <script setup lang="ts">
-import UiInput from '../atoms/UiInput.vue';
-import UiCircleButton from '../atoms/UiCircleButton.vue';
+import UiCircleButton from '@/ui/atoms/UiCircleButton.vue';
+import UiInput from '@/ui/atoms/UiInput.vue';
 import { computed } from 'vue';
 
 interface Props {
+  modelValue: number;
   name: string;
   label: string;
   isValid: boolean;
   errorMessage: string;
-  modelValue: string | number;
 }
-
 const props = defineProps<Props>();
 
-const emit = defineEmits(['update:modelValue', 'click', 'blur']);
+const emit = defineEmits(['update:modelValue', 'blur']);
 
 const value = computed({
   get() {
     return props.modelValue;
   },
   set(value) {
-    emit('update:modelValue', value);
+    if (value > 0 && value <= 10) {
+      emit('update:modelValue', value);
+    }
   }
 });
 </script>
 
 <template>
-  <div class="UiInputWithButton">
+  <div class="UiCounterInput">
+    <UiCircleButton variant="success" @click="value++" />
     <UiInput
       :is-valid="isValid"
       :name="name"
       :error-message="errorMessage"
       v-model="value"
       :label="label"
+      type="number"
       class="input"
-      @blur="emit('blur')"
     />
-    <UiCircleButton variant="success" @click="emit('click')" />
+    <UiCircleButton variant="danger" @click="value--" />
   </div>
 </template>
 
 <style lang="scss" scoped>
-.UiInputWithButton {
+.UiCounterInput {
   display: flex;
-  gap: 1.2rem;
-  align-items: center;
+  width: 100%;
+  gap: 3rem;
 
   .input {
-    flex-grow: 1;
+    width: 100%;
   }
 }
 </style>

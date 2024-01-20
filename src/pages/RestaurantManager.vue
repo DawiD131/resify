@@ -5,9 +5,11 @@ import { useRestaurantDetails, useRestaurantStore } from '@/core';
 import { useRoute, useRouter } from 'vue-router';
 import RestaurantDataForm from '@/components/forms/RestaurantDataForm.vue';
 import TagsForm from '@/components/forms/TagsForm.vue';
+import { useQuasar } from 'quasar';
 
 const route = useRoute();
 const router = useRouter();
+const $q = useQuasar();
 
 const tabsConfig = [
   {
@@ -23,8 +25,25 @@ const tabsConfig = [
 const { restaurantDetails, tags } = useRestaurantDetails(route.params.id as string);
 const restaurantStore = useRestaurantStore();
 const handleRemoveRestaurantClick = async () => {
-  await restaurantStore.deleteRestaurant(Number(route.params.id));
-  await router.push('/my-account/my-restaurants');
+  try {
+    await restaurantStore.deleteRestaurant(Number(route.params.id));
+    await router.push('/my-account/my-restaurants');
+    $q.notify({
+      message: 'Restaurant was removed successfully',
+      position: 'top',
+      color: 'positive',
+      timeout: 1000,
+      icon: 'thumb_up'
+    });
+  } catch {
+    $q.notify({
+      message: 'Ooops something went wrong',
+      position: 'top',
+      color: 'red',
+      timeout: 1000,
+      icon: 'thumb_down'
+    });
+  }
 };
 </script>
 

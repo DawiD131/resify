@@ -10,6 +10,7 @@ interface Props {
   from: string;
   to: string;
   reservationState: 'accepted' | 'pending' | 'archived' | 'cancelled';
+  peopleCount: number;
 }
 
 const props = defineProps<Props>();
@@ -58,6 +59,12 @@ function formatDate(date: Date, dateDiveder: string = '-') {
         <UiText color="primary">To:</UiText>
         <UiText color="dark-light">
           {{ formatDate(new Date(props.to)) }}
+        </UiText>
+      </div>
+      <div class="value-box">
+        <UiText color="primary">People count:</UiText>
+        <UiText color="dark-light">
+          {{ peopleCount }}
         </UiText>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { UiText, UiButton } from '@/ui';
 import { useApiRepository } from '@/core';
 import { useQuasar } from 'quasar';
 import { useRouter } from 'vue-router';
+import UiCounterInput from '@/ui/molecules/UiCounterInput.vue';
 
 interface Props {
   restaurantId: number;
@@ -14,6 +15,7 @@ const props = defineProps<Props>();
 const date = ref(new Date().toISOString().split('T')[0]);
 const from = ref('');
 const to = ref('');
+const peopleCount = ref(1);
 
 const router = useRouter();
 const dateFrom = computed(() => `${date.value} ${from.value}`);
@@ -39,7 +41,8 @@ const submit = async () => {
       restaurantId: props.restaurantId,
       from: new Date(dateFrom.value),
       to: new Date(dateTo.value),
-      state: 'pending'
+      state: 'pending',
+      peopleCount: peopleCount.value
     });
 
     $q.notify({
@@ -85,6 +88,13 @@ const toOptions = (hr: number) => {
 
 <template>
   <div class="TermPickerForm">
+    <UiCounterInput
+      is-valid="is-valid"
+      name="people-count"
+      error-message="invalid-field"
+      v-model="peopleCount"
+      label="People count"
+    />
     <div class="input-wrapper">
       <div class="box">
         <UiText size="l" color="dark-light"> Date </UiText>

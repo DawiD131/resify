@@ -5,6 +5,7 @@ import { ref } from 'vue';
 import { useRegisterValidators } from '@/validators';
 import useVuelidate from '@vuelidate/core';
 import UiCheckbox from '@/ui/atoms/UiCheckbox.vue';
+import { useQuasar } from 'quasar';
 
 const { openLoginForm } = useAuthFormState();
 const state = ref({
@@ -15,7 +16,9 @@ const state = ref({
   isBusiness: false
 });
 
+const $q = useQuasar();
 const rules = useRegisterValidators();
+
 const $v = useVuelidate(rules, state, { $lazy: true });
 
 const userStore = useUserStore();
@@ -23,7 +26,24 @@ const userStore = useUserStore();
 const submit = async () => {
   $v.value.$touch();
   if (!$v.value.$invalid) {
-    await userStore.register(state.value);
+    try {
+      await userStore.register(state.value);
+      $q.notify({
+        message: 'Account was created',
+        position: 'top',
+        color: 'positive',
+        timeout: 1000,
+        icon: 'thumb_up'
+      });
+    } catch {
+      $q.notify({
+        message: 'Something went wrong',
+        position: 'top',
+        color: 'red',
+        timeout: 1000,
+        icon: 'thumb_down'
+      });
+    }
   }
 };
 </script>

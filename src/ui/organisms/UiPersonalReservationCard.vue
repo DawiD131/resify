@@ -10,6 +10,7 @@ interface Props {
   thumbUrl: string;
   from: string;
   to: string;
+  peopleCount: number;
 }
 
 const props = defineProps<Props>();
@@ -54,6 +55,12 @@ function formatDate(date: Date, dateDiveder: string = '-') {
         <UiText color="primary">To:</UiText>
         <UiText color="dark-light">
           {{ formatDate(new Date(props.to)) }}
+        </UiText>
+      </div>
+      <div class="time-box">
+        <UiText color="primary">People count:</UiText>
+        <UiText color="dark-light">
+          {{ peopleCount }}
         </UiText>
       </div>
     </div>

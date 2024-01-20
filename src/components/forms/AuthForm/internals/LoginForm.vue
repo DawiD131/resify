@@ -4,6 +4,7 @@ import { ref } from 'vue';
 import { useAuthStore, useAuthFormState } from '@/core';
 import { useVuelidate } from '@vuelidate/core';
 import { useLoginValidators } from '@/validators';
+import { useQuasar } from 'quasar';
 
 const rules = useLoginValidators();
 const { openRegistrationForm } = useAuthFormState();
@@ -14,12 +15,31 @@ const state = ref({
   password: ''
 });
 
+const $q = useQuasar();
 const $v = useVuelidate(rules, state, { $lazy: true });
 
 const submit = async () => {
   $v.value.$touch();
   if (!$v.value.$invalid) {
-    await authStore.login(state.value.email, state.value.password);
+    try {
+      await authStore.login(state.value.email, state.value.password);
+
+      $q.notify({
+        message: 'Logged in',
+        position: 'top',
+        color: 'positive',
+        timeout: 1000,
+        icon: 'thumb_up'
+      });
+    } catch {
+      $q.notify({
+        message: 'Incorrect login or password',
+        position: 'top',
+        color: 'red',
+        timeout: 1000,
+        icon: 'thumb_down'
+      });
+    }
   }
 };
 </script>

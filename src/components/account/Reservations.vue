@@ -51,6 +51,7 @@ const archivedReservations = computed(() =>
           v-for="reservation in activeReservations"
           :key="reservation.id"
           :to="reservation.to"
+          :people-count="reservation.peopleCount"
           :from="reservation.from"
           :restaurant-name="reservation.restaurant.name"
           :rating="3"
@@ -67,6 +68,7 @@ const archivedReservations = computed(() =>
         <UiPersonalReservationCard
           v-for="reservation in pendingReservations"
           :key="reservation.id"
+          :people-count="reservation.peopleCount"
           :to="reservation.to"
           :from="reservation.from"
           :restaurant-name="reservation.restaurant.name"
@@ -84,6 +86,7 @@ const archivedReservations = computed(() =>
         <UiPersonalReservationCard
           v-for="reservation in cancelledReservations"
           :key="reservation.id"
+          :people-count="reservation.peopleCount"
           :to="reservation.to"
           :from="reservation.from"
           :restaurant-name="reservation.restaurant.name"

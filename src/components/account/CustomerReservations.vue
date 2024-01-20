@@ -13,12 +13,12 @@ const tabsConfig = [
     slotName: 'pending-reservations'
   },
   {
-    displayName: 'Archived reservations',
-    slotName: 'archived-reservations'
-  },
-  {
     displayName: 'Cancelled reservations',
     slotName: 'cancelled-reservations'
+  },
+  {
+    displayName: 'Archived reservations',
+    slotName: 'archived-reservations'
   }
 ];
 const { loadReservations, reservations, cancel, activate, pending } = useReservations('business');
@@ -57,10 +57,11 @@ console.log(reservations);
           :rating="3"
           thumb-url="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
           :reservation-state="reservation.state"
+          :people-count="reservation.peopleCount"
           @cancel="cancel(reservation.id, reservation)"
           @pending="pending(reservation.id, reservation)"
         />
-        <UiHeading v-if="!pendingReservations.length" size="h4" color="dark-light"
+        <UiHeading v-if="!activeReservations.length" size="h4" color="dark-light"
           >You don't have pending reservations</UiHeading
         >
       </UiFlexWithGapLayout>
@@ -68,6 +69,7 @@ console.log(reservations);
     <template #pending-reservations>
       <UiFlexWithGapLayout>
         <UiRestaurateurReservationCard
+          :people-count="reservation.peopleCount"
           v-for="reservation in pendingReservations"
           :user-name="`${reservation.user.firstName} ${reservation.user.lastName}`"
           :key="reservation.id"
@@ -89,6 +91,7 @@ console.log(reservations);
     <template #cancelled-reservations>
       <UiFlexWithGapLayout>
         <UiRestaurateurReservationCard
+          :people-count="reservation.peopleCount"
           v-for="reservation in cancelledReservations"
           :user-name="`${reservation.user.firstName} ${reservation.user.lastName}`"
           :key="reservation.id"
@@ -101,7 +104,7 @@ console.log(reservations);
           @pending="pending(reservation.id, reservation)"
           @accept="activate(reservation.id, reservation)"
         />
-        <UiHeading v-if="!pendingReservations.length" size="h4" color="dark-light"
+        <UiHeading v-if="!cancelledReservations.length" size="h4" color="dark-light"
           >You don't have pending reservations</UiHeading
         >
       </UiFlexWithGapLayout>

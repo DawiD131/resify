@@ -1,4 +1,5 @@
 import type { HttpClient } from '@/http-client';
+import { biAward } from '@quasar/extras/bootstrap-icons';
 
 export class RestaurantRepository {
   constructor(private httpClient: HttpClient) {}
@@ -34,5 +35,18 @@ export class RestaurantRepository {
 
   public async deleteRestaurant(id: number) {
     return await this.httpClient.delete(`restaurant/${id}`);
+  }
+
+  public updateRestaurant(
+    id: string,
+    params: {
+      name: string;
+      description: string;
+      city: string;
+      zipCode: string;
+      address: string;
+    }
+  ) {
+    return this.httpClient.patch(`restaurant/${id}`, params);
   }
 }

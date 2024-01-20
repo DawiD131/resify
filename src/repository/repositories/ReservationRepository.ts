@@ -12,6 +12,7 @@ export class ReservationRepository {
     from: Date;
     to: Date;
     state: 'accepted' | 'pending' | 'rejected';
+    peopleCount: number;
   }) {
     return await this.httpClient.post('reservation', params);
   }

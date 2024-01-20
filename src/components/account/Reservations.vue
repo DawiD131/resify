@@ -102,6 +102,7 @@ const archivedReservations = computed(() =>
       <UiFlexWithGapLayout>
         <UiPersonalReservationCard
           v-for="reservation in archivedReservations"
+          :people-count="reservation.peopleCount"
           :key="reservation.id"
           :to="reservation.to"
           :from="reservation.from"

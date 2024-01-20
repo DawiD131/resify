@@ -89,7 +89,7 @@ const toOptions = (hr: number) => {
 <template>
   <div class="TermPickerForm">
     <UiCounterInput
-      is-valid="is-valid"
+      is-valid
       name="people-count"
       error-message="invalid-field"
       v-model="peopleCount"

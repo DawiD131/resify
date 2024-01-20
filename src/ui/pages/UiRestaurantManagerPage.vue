@@ -24,7 +24,12 @@ import { UiFooter } from '@/ui';
 @import '../../assets/scss/helpers.scss';
 
 .UiRestaurantManagerPage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
   .main-content {
+    width: 100%;
     margin-top: 12rem;
     @include page-content-layout-base();
   }

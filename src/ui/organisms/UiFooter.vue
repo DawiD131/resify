@@ -16,6 +16,7 @@ import UiText from '../atoms/UiText/UiText.vue';
 @import '../../assets/scss/helpers.scss';
 
 .UiFooter {
+  margin-top: auto;
   height: 25rem;
   width: 100%;
   background: url('../../assets/footer-wave.png');

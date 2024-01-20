@@ -3,6 +3,7 @@ import { computed, ref } from 'vue';
 import { UiText, UiButton } from '@/ui';
 import { useApiRepository } from '@/core';
 import { useQuasar } from 'quasar';
+import { useRouter } from 'vue-router';
 
 interface Props {
   restaurantId: number;
@@ -14,6 +15,7 @@ const date = ref(new Date().toISOString().split('T')[0]);
 const from = ref('');
 const to = ref('');
 
+const router = useRouter();
 const dateFrom = computed(() => `${date.value} ${from.value}`);
 const dateTo = computed(() => `${date.value} ${to.value}`);
 const { reservationRepository } = useApiRepository();
@@ -47,6 +49,8 @@ const submit = async () => {
       timeout: 1000,
       icon: 'thumb_up'
     });
+
+    await router.push('/my-account/reservations');
   } catch (e) {
     console.error(e);
   }

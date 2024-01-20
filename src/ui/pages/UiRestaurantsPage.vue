@@ -16,6 +16,10 @@ import UiFooter from '../organisms/UiFooter.vue';
 @import '../../assets/scss/helpers.scss';
 
 .UiRestaurantsPage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
   .content {
     min-height: calc(70vh - 12rem);
     margin-top: 12rem;

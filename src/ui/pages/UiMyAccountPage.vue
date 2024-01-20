@@ -26,6 +26,9 @@ import { UiFooter } from '@/ui';
 @import '../../assets/scss/helpers.scss';
 
 .UiMyAccountPage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   .main-content {
     padding: 12rem 0 5rem 0;
 
@@ -45,6 +48,10 @@ import { UiFooter } from '@/ui';
 
   .bottom-content {
     margin-top: 6rem;
+    width: 100%;
+  }
+
+  .main-content {
     width: 100%;
   }
 }

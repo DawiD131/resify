@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { UiLandingPage, UiHeading, UiButton, UiVerticalRestaurantCard, UiSlider } from '@/ui';
-import _ from 'lodash';
 import Header from '@/components/organisms/Header.vue';
 import { useModalStore } from '@/features/modals/stores/useModalStore';
 import { onMounted } from 'vue';
@@ -50,6 +49,7 @@ const openLoginModal = () => {
           />
         </template>
       </UiSlider>
+      <UiHeading size="h2" color="dark-light" v-else>There is no restaurants yet</UiHeading>
     </template>
     <template #bottom-section-heading>
       <UiHeading size="h2" color="dark">Recently added</UiHeading>
@@ -75,6 +75,7 @@ const openLoginModal = () => {
           />
         </template>
       </UiSlider>
+      <UiHeading size="h2" color="dark-light" v-else>There is no restaurants yet</UiHeading>
     </template>
   </UiLandingPage>
 </template>

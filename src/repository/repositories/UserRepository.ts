@@ -11,4 +11,8 @@ export class UserRepository {
   public async getUser() {
     return await this.httpClient.get('/user');
   }
+
+  public changePassword(payload: { currentPwd: string; newPwd: string }) {
+    return this.httpClient.patch('/user/change-password', payload);
+  }
 }

@@ -1,25 +1,12 @@
 import { defineStore } from 'pinia';
 import { useApiRepository } from '@/core/useApiRepository';
-import { computed, type ComputedRef, type Ref, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { UserDto } from '@/repository/dto/UserDto';
 import { useAuthFormState } from '@/core/auth';
 
-interface UseUserStore {
-  currentUser: Ref<{
-    email: string;
-    firstName: string;
-    lastName: string;
-    isBusiness: boolean;
-    favouriteRestaurants: any;
-    id: number;
-  } | null>;
-  getUser: () => Promise<void>;
-  register: (user: UserDto) => Promise<void>;
-  isBusinessAccount: ComputedRef<boolean>;
-}
-
-export const useUserStore = defineStore<'useUserStore', UseUserStore>('useUserStore', () => {
+export const useUserStore = defineStore('useUserStore', () => {
   const { userRepository } = useApiRepository();
+
   const currentUser = ref<{
     email: string;
     firstName: string;
@@ -49,10 +36,15 @@ export const useUserStore = defineStore<'useUserStore', UseUserStore>('useUserSt
     }
   };
 
+  const changePassword = async (payload: { currentPwd: string; newPwd: string }) => {
+    await userRepository.changePassword(payload);
+  };
+
   return {
     register,
     getUser,
     currentUser,
+    changePassword,
     isBusinessAccount: computed(() => (currentUser.value ? currentUser.value.isBusiness : false))
   };
 });

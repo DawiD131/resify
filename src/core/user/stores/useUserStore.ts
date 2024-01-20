@@ -37,7 +37,17 @@ export const useUserStore = defineStore('useUserStore', () => {
   };
 
   const changePassword = async (payload: { currentPwd: string; newPwd: string }) => {
-    await userRepository.changePassword(payload);
+    return await userRepository.changePassword(payload);
+  };
+
+  const updatePersonalData = async (payload: {
+    email: string;
+    firstName: string;
+    lastName: string;
+    pwd: string;
+  }) => {
+    await userRepository.changePersonalData(payload);
+    await getUser();
   };
 
   return {
@@ -45,6 +55,7 @@ export const useUserStore = defineStore('useUserStore', () => {
     getUser,
     currentUser,
     changePassword,
+    updatePersonalData,
     isBusinessAccount: computed(() => (currentUser.value ? currentUser.value.isBusiness : false))
   };
 });

@@ -15,4 +15,13 @@ export class UserRepository {
   public changePassword(payload: { currentPwd: string; newPwd: string }) {
     return this.httpClient.patch('/user/change-password', payload);
   }
+
+  public changePersonalData(payload: {
+    email: string;
+    firstName: string;
+    lastName: string;
+    pwd: string;
+  }) {
+    return this.httpClient.patch('/user/change-personal-data', payload);
+  }
 }

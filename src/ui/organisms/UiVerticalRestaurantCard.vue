@@ -9,7 +9,7 @@ interface Props {
   rate: 1 | 2 | 3 | 4 | 5;
   title: string;
   thumbUrl: string;
-  tags: string[];
+  tags: { name: string; id: number }[];
   description: string;
 }
 
@@ -26,7 +26,7 @@ const handleClick = async () => {
   <div class="UiVerticalRestaurantCard">
     <UiRatingWithTitle :rate="props.rate" :title="props.title" :thumb-url="props.thumbUrl" />
     <div class="tags-box">
-      <UiTag v-for="(tag, index) in props.tags" :key="index" :label="tag" />
+      <UiTag v-for="tag in props.tags" :key="tag.id" :label="tag.name" />
     </div>
     <div class="description">
       <UiText size="xs" color="dark-light">{{ props.description }}</UiText>

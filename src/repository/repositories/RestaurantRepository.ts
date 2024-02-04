@@ -1,5 +1,4 @@
 import type { HttpClient } from '@/http-client';
-import { biAward } from '@quasar/extras/bootstrap-icons';
 
 export class RestaurantRepository {
   constructor(private httpClient: HttpClient) {}
